@@ -8,7 +8,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
  
      <!-- Site Metas -->
-    <title>Live Dinner Restaurant - Responsive HTML5 Template</title>  
+    <title>La Piconeria de Ameca</title>  
     <meta name="keywords" content="">
     <meta name="description" content="">
     <meta name="author" content="">
@@ -39,34 +39,12 @@
 		<nav class="navbar navbar-expand-lg navbar-light bg-light">
 			<div class="container">
 				<a class="navbar-brand" href="index.html">
-					<img src="images/logo.png" alt="" />
+					<img src="images/logo.png" alt="Tradición para tu meza" class="mi-logo" />
 				</a>
 				<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbars-rs-food" aria-controls="navbars-rs-food" aria-expanded="false" aria-label="Toggle navigation">
 				  <span class="navbar-toggler-icon"></span>
 				</button>
-				<div class="collapse navbar-collapse" id="navbars-rs-food">
-					<ul class="navbar-nav ml-auto">
-						<li class="nav-item active"><a class="nav-link" href="index.html">Home</a></li>
-						<li class="nav-item"><a class="nav-link" href="menu.html">Menu</a></li>
-						<li class="nav-item"><a class="nav-link" href="about.html">About</a></li>
-						<li class="nav-item dropdown">
-							<a class="nav-link dropdown-toggle" href="#" id="dropdown-a" data-toggle="dropdown">Pages</a>
-							<div class="dropdown-menu" aria-labelledby="dropdown-a">
-								<a class="dropdown-item" href="reservation.html">Reservation</a>
-								<a class="dropdown-item" href="stuff.html">Stuff</a>
-								<a class="dropdown-item" href="gallery.html">Gallery</a>
-							</div>
-						</li>
-						<li class="nav-item dropdown">
-							<a class="nav-link dropdown-toggle" href="#" id="dropdown-a" data-toggle="dropdown">Blog</a>
-							<div class="dropdown-menu" aria-labelledby="dropdown-a">
-								<a class="dropdown-item" href="blog.html">blog</a>
-								<a class="dropdown-item" href="blog-details.html">blog Single</a>
-							</div>
-						</li>
-						<li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
-					</ul>
-				</div>
+				<?php include_once "modulos/menu.php"; ?>
 			</div>
 		</nav>
 	</header>
@@ -76,40 +54,40 @@
 	<div id="slides" class="cover-slides">
 		<ul class="slides-container">
 			<li class="text-left">
-				<img src="images/slider-01.jpg" alt="">
+				<img src="images/cabeceraPicon.jpg" alt="">
 				<div class="container">
 					<div class="row">
 						<div class="col-md-12">
-							<h1 class="m-b-20"><strong>Welcome To <br> Live Dinner Restaurant</strong></h1>
-							<p class="m-b-40">See how your users experience your website in realtime or view  <br> 
-							trends to see any changes in performance over time.</p>
-							<p><a class="btn btn-lg btn-circle btn-outline-new-white" href="#">Reservation</a></p>
+							<h1 class="m-b-20"><strong>Bienvenido a <br> La Piconeria de Ameca</strong></h1>
+							<p class="m-b-40">¡De nuestro horno a tu mesa! disfruta el aroma y el sabor único de nuestro picón artesanal  <br> 
+							 hecho con pasion en cada rebanada.</p>
+							<p><a class="btn btn-lg btn-circle btn-outline-new-white" href="#">Comprar</a></p>
 						</div>
 					</div>
 				</div>
 			</li>
 			<li class="text-left">
-				<img src="images/slider-02.jpg" alt="">
+				<img src="images/cabeceraPicon2.jpg" alt="">
 				<div class="container">
 					<div class="row">
 						<div class="col-md-12">
-							<h1 class="m-b-20"><strong>Welcome To <br> Live Dinner Restaurant</strong></h1>
-							<p class="m-b-40">See how your users experience your website in realtime or view  <br> 
-							trends to see any changes in performance over time.</p>
-							<p><a class="btn btn-lg btn-circle btn-outline-new-white" href="#">Reservation</a></p>
+							<h1 class="m-b-20"><strong>Bienvenido a <br> La Piconeria de Ameca</strong></h1>
+							<p class="m-b-40">picones de nuez con pasas, picones de diferentes rellenos: <br> 
+							guayabate, membrillo, frutos secos, chocolate, arandanos, nuez con membrillo, picon integral.</p>
+							<p><a class="btn btn-lg btn-circle btn-outline-new-white" href="#">Comprar</a></p>
 						</div>
 					</div>
 				</div>
 			</li>
 			<li class="text-left">
-				<img src="images/slider-03.jpg" alt="">
+				<img src="images/cabeceraPicon3.jpg" alt="">
 				<div class="container">
 					<div class="row">
 						<div class="col-md-12">
-							<h1 class="m-b-20"><strong>Welcome To <br> Yamifood Restaurant</strong></h1>
-							<p class="m-b-40">See how your users experience your website in realtime or view  <br> 
-							trends to see any changes in performance over time.</p>
-							<p><a class="btn btn-lg btn-circle btn-outline-new-white" href="#">Reservation</a></p>
+							<h1 class="m-b-20"><strong>Bienvenido a <br> La Piconeria de Ameca</strong></h1>
+							<p class="m-b-40">galletas de diferentes sabores y una gran variedad de pane dulce tradicional  <br> 
+							conchas, cuernos, biskets, cemas, polvorones, cajitas, panquets, orejas, roles, etc.</p>
+							<p><a class="btn btn-lg btn-circle btn-outline-new-white" href="#">Comprar</a></p>
 						</div>
 					</div>
 				</div>
@@ -128,11 +106,11 @@
 			<div class="row">
 				<div class="col-lg-6 col-md-6 col-sm-12 text-center">
 					<div class="inner-column">
-						<h1>Welcome To <span>Live Dinner Restaurant</span></h1>
-						<h4>Little Story</h4>
+						<h1>Bienvenidos a <span>La Piconeria de Ameca</span></h1>
+						<h4>Reseña</h4>
 						<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque auctor suscipit feugiat. Ut at pellentesque ante, sed convallis arcu. Nullam facilisis, eros in eleifend luctus, odio ante sodales augue, eget lacinia lectus erat et sem. </p>
 						<p>Sed semper orci sit amet porta placerat. Etiam quis finibus eros. Sed aliquam metus lorem, a pellentesque tellus pretium a. Nulla placerat elit in justo vestibulum, et maximus sem pulvinar.</p>
-						<a class="btn btn-lg btn-circle btn-outline-new-white" href="#">Reservation</a>
+						<a class="btn btn-lg btn-circle btn-outline-new-white" href="#">Comprar</a>
 					</div>
 				</div>
 				<div class="col-lg-6 col-md-6 col-sm-12">
@@ -149,9 +127,9 @@
 			<div class="row">
 				<div class="col-md-8 ml-auto mr-auto text-center">
 					<p class="lead ">
-						" If you're not the one cooking, stay out of the way and compliment the chef. "
+						" Si visitas Ameca sin provar el delicioso picón de la piconeria, es como si no hubieras visitado Ameca. "
 					</p>
-					<span class="lead">Michael Strahan</span>
+					<span class="lead">Fabiola Prado</span>
 				</div>
 			</div>
 		</div>
@@ -164,8 +142,8 @@
 			<div class="row">
 				<div class="col-lg-12">
 					<div class="heading-title text-center">
-						<h2>Special Menu</h2>
-						<p>Lorem Ipsum is simply dummy text of the printing and typesetting</p>
+						<h2>Algunos de nuetros productos</h2>
+						<p>En la piconería puedes encontrar un gran surtido de productos</p>
 					</div>
 				</div>
 			</div>
@@ -173,10 +151,10 @@
 			<div class="row inner-menu-box">
 				<div class="col-3">
 					<div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
-						<a class="nav-link active" id="v-pills-home-tab" data-toggle="pill" href="#v-pills-home" role="tab" aria-controls="v-pills-home" aria-selected="true">All</a>
-						<a class="nav-link" id="v-pills-profile-tab" data-toggle="pill" href="#v-pills-profile" role="tab" aria-controls="v-pills-profile" aria-selected="false">Drinks</a>
-						<a class="nav-link" id="v-pills-messages-tab" data-toggle="pill" href="#v-pills-messages" role="tab" aria-controls="v-pills-messages" aria-selected="false">Lunch</</a>
-						<a class="nav-link" id="v-pills-settings-tab" data-toggle="pill" href="#v-pills-settings" role="tab" aria-controls="v-pills-settings" aria-selected="false">Dinner</a>
+						<a class="nav-link active" id="v-pills-home-tab" data-toggle="pill" href="#v-pills-home" role="tab" aria-controls="v-pills-home" aria-selected="true">Mostrar Todo</a>
+						<a class="nav-link" id="v-pills-profile-tab" data-toggle="pill" href="#v-pills-profile" role="tab" aria-controls="v-pills-profile" aria-selected="false">Picones</a>
+						<a class="nav-link" id="v-pills-messages-tab" data-toggle="pill" href="#v-pills-messages" role="tab" aria-controls="v-pills-messages" aria-selected="false">Pan Dulce</</a>
+						<a class="nav-link" id="v-pills-settings-tab" data-toggle="pill" href="#v-pills-settings" role="tab" aria-controls="v-pills-settings" aria-selected="false">Bebidas</a>
 					</div>
 				</div>
 				
@@ -408,8 +386,8 @@
 			<div class="row">
 				<div class="col-lg-12">
 					<div class="heading-title text-center">
-						<h2>Gallery</h2>
-						<p>Lorem Ipsum is simply dummy text of the printing and typesetting</p>
+						<h2>Galeria de Productos</h2>
+						<p>Visite alguna de nuestras sucursales para ver más productos.</p>
 					</div>
 				</div>
 			</div>
@@ -457,8 +435,8 @@
 			<div class="row">
 				<div class="col-lg-12">
 					<div class="heading-title text-center">
-						<h2>Customer Reviews</h2>
-						<p>Lorem Ipsum is simply dummy text of the printing and typesetting</p>
+						<h2>Opiniones de nuestros clientes</h2>
+						<p>Nuestros clientes respaldan la calidad de nuestro productos</p>
 					</div>
 				</div>
 			</div>

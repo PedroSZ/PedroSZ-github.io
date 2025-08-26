@@ -1364,7 +1364,12 @@ blockquote {
 
 
 
-
+/*A partir de aqui trabajo */
+.mi-logo {
+  width: 170px; /* Define el ancho de la imagen a 300 píxeles */
+  height: 70px; /* Define la altura de la imagen a 200 píxeles */
+  object-fit: cover; /* Asegura que la imagen llene el espacio sin distorsionarse */
+}
 
 
 
