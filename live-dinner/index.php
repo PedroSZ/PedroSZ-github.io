@@ -154,6 +154,7 @@
 						<a class="nav-link active" id="v-pills-home-tab" data-toggle="pill" href="#v-pills-home" role="tab" aria-controls="v-pills-home" aria-selected="true">Mostrar Todo</a>
 						<a class="nav-link" id="v-pills-profile-tab" data-toggle="pill" href="#v-pills-profile" role="tab" aria-controls="v-pills-profile" aria-selected="false">Picones</a>
 						<a class="nav-link" id="v-pills-messages-tab" data-toggle="pill" href="#v-pills-messages" role="tab" aria-controls="v-pills-messages" aria-selected="false">Pan Dulce</</a>
+						<a class="nav-link" id="v-pills-messages2-tab" data-toggle="pill" href="#v-pills-messages2" role="tab" aria-controls="v-pills-messages2" aria-selected="false">Galletas</</a>
 						<a class="nav-link" id="v-pills-settings-tab" data-toggle="pill" href="#v-pills-settings" role="tab" aria-controls="v-pills-settings" aria-selected="false">Bebidas</a>
 					</div>
 				</div>
@@ -260,7 +261,60 @@
 										</div>
 									</div>
 								</div>
+
+								<div class="col-lg-4 col-md-6 special-grid dinner">
+									<div class="gallery-single fix">
+										<img src="images/img-54.jpg" class="img-fluid" alt="Image">
+										<div class="why-text">
+											<h4>Special Dinner 3</h4>
+											<p>Sed id magna vitae eros sagittis euismod.</p>
+											<h5> $24.79</h5>
+										</div>
+									</div>
+								</div>
+								<div class="col-lg-4 col-md-6 special-grid dinner">
+									<div class="gallery-single fix">
+										<img src="images/img-51.jpg" class="img-fluid" alt="Image">
+										<div class="why-text">
+											<h4>Special Dinner 3</h4>
+											<p>Sed id magna vitae eros sagittis euismod.</p>
+											<h5> $24.79</h5>
+										</div>
+									</div>
+								</div>
+								<div class="col-lg-4 col-md-6 special-grid dinner">
+									<div class="gallery-single fix">
+										<img src="images/img-49.jpg" class="img-fluid" alt="Image">
+										<div class="why-text">
+											<h4>Special Dinner 3</h4>
+											<p>Sed id magna vitae eros sagittis euismod.</p>
+											<h5> $24.79</h5>
+										</div>
+									</div>
+								</div>
+
+
+
+
+
+
+
+
+
+
+
+
 							</div>
+
+
+
+
+
+
+
+
+
+
 							
 						</div>
 						<div class="tab-pane fade" id="v-pills-profile" role="tabpanel" aria-labelledby="v-pills-profile-tab">
@@ -336,6 +390,49 @@
 								</div>
 							</div>
 						</div>
+
+
+
+<div class="tab-pane fade" id="v-pills-messages2" role="tabpanel" aria-labelledby="v-pills-messages2-tab">
+							<div class="row">
+								<div class="col-lg-4 col-md-6 special-grid lunch">
+									<div class="gallery-single fix">
+										<img src="images/img-50.jpg" class="img-fluid" alt="Image">
+										<div class="why-text">
+											<h4>Special Lunch 1</h4>
+											<p>Sed id magna vitae eros sagittis euismod.</p>
+											<h5> $15.79</h5>
+										</div>
+									</div>
+								</div>
+								
+								<div class="col-lg-4 col-md-6 special-grid lunch">
+									<div class="gallery-single fix">
+										<img src="images/img-51.jpg" class="img-fluid" alt="Image">
+										<div class="why-text">
+											<h4>Special Lunch 2</h4>
+											<p>Sed id magna vitae eros sagittis euismod.</p>
+											<h5> $18.79</h5>
+										</div>
+									</div>
+								</div>
+								
+								<div class="col-lg-4 col-md-6 special-grid lunch">
+									<div class="gallery-single fix">
+										<img src="images/img-52.jpg" class="img-fluid" alt="Image">
+										<div class="why-text">
+											<h4>Special Lunch 3</h4>
+											<p>Sed id magna vitae eros sagittis euismod.</p>
+											<h5> $20.79</h5>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+
+
+
+
 						<div class="tab-pane fade" id="v-pills-settings" role="tabpanel" aria-labelledby="v-pills-settings-tab">
 							<div class="row">
 								<div class="col-lg-4 col-md-6 special-grid dinner">
@@ -525,15 +622,15 @@
 		<div class="container">
 			<div class="row">
 				<div class="col-lg-3 col-md-6">
-					<h3>About Us</h3>
-					<p>Integer cursus scelerisque ipsum id efficitur. Donec a dui fringilla, gravida lorem ac, semper magna. Aenean rhoncus ac lectus a interdum. Vivamus semper posuere dui.</p>
+					<h3>Nuestra Sucursales</h3>
+					<p>Para obtener un horario detallado de acuerdo a la sucursal verificar en La Piconeria de Ameca google maps en tu sucursal mas cercana.</p>
 				</div>
 				<div class="col-lg-3 col-md-6">
-					<h3>Subscribe</h3>
+					<h3>Suscribirse</h3>
 					<div class="subscribe_form">
 						<form class="subscribe_form">
-							<input name="EMAIL" id="subs-email" class="form_input" placeholder="Email Address..." type="email">
-							<button type="submit" class="submit">SUBSCRIBE</button>
+							<input name="EMAIL" id="subs-email" class="form_input" placeholder="Correo Electrónico" type="email">
+							<button type="submit" class="submit">SUSCRIBIRSE</button>
 							<div class="clearfix"></div>
 						</form>
 					</div>
@@ -546,17 +643,17 @@
 					</ul>
 				</div>
 				<div class="col-lg-3 col-md-6">
-					<h3>Contact information</h3>
-					<p class="lead">Ipsum Street, Lorem Tower, MO, Columbia, 508000</p>
-					<p class="lead"><a href="#">+01 2000 800 9999</a></p>
-					<p><a href="#"> info@admin.com</a></p>
+					<h3>Información de contacto</h3>
+					<p class="lead">Independencia 49B, 46600 Ameca, Jal.</p>
+					<p class="lead"><a href="#">+52 375 100 3330</a></p>
+					<p><a href="#"> servicioalcliente@lapiconeria.com</a></p>
 				</div>
 				<div class="col-lg-3 col-md-6">
-					<h3>Opening hours</h3>
-					<p><span class="text-color">Monday: </span>Closed</p>
-					<p><span class="text-color">Tue-Wed :</span> 9:Am - 10PM</p>
-					<p><span class="text-color">Thu-Fri :</span> 9:Am - 10PM</p>
-					<p><span class="text-color">Sat-Sun :</span> 5:PM - 10PM</p>
+					<h3>Horarios de Atención</h3>
+					
+					<p><span class="text-color">Lunes-Sabado :</span> 9:Am - 8PM</p>
+					<p><span class="text-color">Domingos :</span> 9:30Am - 6PM</p>
+					
 				</div>
 			</div>
 		</div>
@@ -565,8 +662,8 @@
 			<div class="container">
 				<div class="row">
 					<div class="col-lg-12">
-						<p class="company-name">All Rights Reserved. &copy; 2018 <a href="#">Live Dinner Restaurant</a> Design By : 
-					<a href="https://html.design/">html design</a></p>
+						<p class="company-name">Todos los derechos reservados. &copy; 2025 <a href="#">La Piconeria de Ameca</a> Design By : 
+					<a href="https://www.facebook.com/profile.php?id=61579712559792">Microblogchains</a></p>
 					</div>
 				</div>
 			</div>

@@ -324,6 +324,7 @@ button:focus{
 }
 .about-section-box .img-fluid{
 	box-shadow: 20px 20px 0px #d65106;
+    
 }
 .inner-column{
 	text-align: left;
@@ -425,6 +426,12 @@ button:focus{
     -webkit-box-shadow: 0 0 10px #ccc;
     box-shadow: 0 0 10px #ccc;
 }
+.gallery-single img {
+    width: 100%;
+    aspect-ratio: 1/1;   /* cuadradas automáticamente */
+    object-fit: cover;
+    border-radius: 8px;  /* opcional */
+}
 
 .why-text {
     position: absolute;
@@ -488,6 +495,12 @@ button:focus{
 	margin-bottom: 30px;
 }
 
+.tz-gallery img {
+    width: 100%;
+    aspect-ratio: 1 / 1;   /* cuadrado automático */
+    object-fit: cover;
+    border-radius: 8px;    /* opcional */
+}
 
 /*------------------------------------------------------------------
     Customer Reviews
