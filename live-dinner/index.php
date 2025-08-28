@@ -1,54 +1,6 @@
 
 
-<?php
-// 🔑 Configuración DB
 
-$host   = '162.241.203.102';
-$db     = 'danie384_lapiconerialandingpagedb';
-$user   = 'danie384_user';
-$pass   = 'Piconeria2025@';
-$charset= 'utf8_spanish2_ci';
-/*
-
-$host = "localhost";
-$user = "root";
-$pass = "";
-$db   = "piconerialandingpagedb";
-*/
-
-// Conectar a MySQL
-$mysqli = new mysqli($host, $user, $pass, $db);
-if ($mysqli->connect_error) {
-    die("Error de conexión: " . $mysqli->connect_error);
-}
-
-// 🔄 Obtener reseñas guardadas en la DB (10 aleatorias)
-$reviews = [];
-$stmt = $mysqli->prepare("SELECT * FROM google_reviews ORDER BY RAND() LIMIT 10");
-$stmt->execute();
-$result = $stmt->get_result();
-while ($row = $result->fetch_assoc()) {
-    $reviews[] = $row;
-}
-
-// ⭐ Generar HTML para el carrusel
-$reviewsHtml = "";
-$active = "active";
-
-foreach ($reviews as $review) {
-    $stars = str_repeat("⭐", $review['rating']);
-    $reviewsHtml .= '
-    <div class="carousel-item text-center '.$active.'">
-        <div class="img-box p-1 border rounded-circle m-auto" style="width:100px;height:100px;overflow:hidden;">
-            <img class="d-block w-100 rounded-circle" src="'.$review['photo'].'" alt="'.$review['author'].'">
-        </div>
-        <h5 class="mt-4 mb-0"><strong class="text-warning text-uppercase">'.$review['author'].'</strong></h5>
-        <h6 class="text-dark m-0">'.$stars.' - '.$review['place_name'].'</h6>
-        <p class="m-0 pt-3">'.$review['text'].'</p>
-    </div>';
-    $active = ""; // solo el primero es activo
-}
-?>
 <!DOCTYPE html>
 <html lang="en"><!-- Basic -->
 <head>
