@@ -3,17 +3,17 @@
 <?php
 // 🔑 Configuración DB
 
-
-$host = "localhost";
-$user = "root";
-$pass = "";
-$db   = "piconerialandingpagedb";
-/*
 $host   = '162.241.203.102';
 $db     = 'danie384_lapiconerialandingpagedb';
 $user   = 'danie384_user';
 $pass   = 'Piconeria2025@';
 $charset= 'utf8_spanish2_ci';
+/*
+
+$host = "localhost";
+$user = "root";
+$pass = "";
+$db   = "piconerialandingpagedb";
 */
 
 // Conectar a MySQL
