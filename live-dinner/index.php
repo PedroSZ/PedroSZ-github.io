@@ -1,3 +1,90 @@
+
+
+<?php
+// 🔑 Configuración DB
+$host = "localhost";
+$user = "root";
+$pass = "";
+$db   = "piconerialandingpagedb";
+
+// 🔑 Tu API KEY de Google Places
+$apiKey = "AIzaSyCICPVYvXHmKZnaQhWp0cwpu8VeV6brcAo";
+
+// 📍 Place IDs de tus sucursales
+$places = [
+    "ChIJc3QwbQCvKIQRU482xYocid8", // Ameca
+    "ChIJzwUqFqt3JoQRTz_JAMk4pNw", // Sucursal con más reseñas
+];
+
+// Conectar a MySQL
+$mysqli = new mysqli(hostname: $host, username: $user, password: $pass, database: $db);
+if ($mysqli->connect_error) {
+    die("Error de conexión: " . $mysqli->connect_error);
+}
+
+// ⏳ Tiempo de vida del caché (6 horas)
+$cacheTime = 6 * 60 * 60;
+
+// Revisar si ya hay reseñas recientes
+$reviews = [];
+$stmt = $mysqli->prepare("SELECT * FROM google_reviews WHERE fetched_at > (NOW() - INTERVAL 6 HOUR) ORDER BY RAND() LIMIT 10");
+$stmt->execute();
+$result = $stmt->get_result();
+while ($row = $result->fetch_assoc()) {
+    $reviews[] = $row;
+}
+
+// Si no hay reseñas frescas, consultar a Google
+if (empty($reviews)) {
+    // Vaciar tabla antes de insertar nuevas
+    $mysqli->query("TRUNCATE TABLE google_reviews");
+
+    foreach ($places as $placeId) {
+        $url = "https://maps.googleapis.com/maps/api/place/details/json?place_id=$placeId&fields=name,rating,reviews&key=$apiKey";
+        $response = file_get_contents($url);
+        $data = json_decode($response, true);
+
+        if (!empty($data['result']['reviews'])) {
+            foreach ($data['result']['reviews'] as $review) {
+                $author = $mysqli->real_escape_string($review['author_name']);
+                $rating = intval($review['rating']);
+                $text   = $mysqli->real_escape_string($review['text']);
+                $place  = $mysqli->real_escape_string($data['result']['name'] ?? "Sucursal");
+                $photo  = $mysqli->real_escape_string($review['profile_photo_url'] ?? "images/quotations-button.png");
+
+                $mysqli->query("INSERT INTO google_reviews (place_id, author, rating, text, place_name, photo) 
+                                VALUES ('$placeId','$author','$rating','$text','$place','$photo')");
+            }
+        }
+    }
+
+    // Volver a cargar desde la DB
+    $stmt = $mysqli->prepare("SELECT * FROM google_reviews ORDER BY RAND() LIMIT 10");
+    $stmt->execute();
+    $result = $stmt->get_result();
+    while ($row = $result->fetch_assoc()) {
+        $reviews[] = $row;
+    }
+}
+
+// ⭐ Generar HTML para el carrusel
+$reviewsHtml = "";
+$active = "active";
+
+foreach ($reviews as $review) {
+    $stars = str_repeat("⭐", $review['rating']);
+    $reviewsHtml .= '
+    <div class="carousel-item text-center '.$active.'">
+        <div class="img-box p-1 border rounded-circle m-auto" style="width:100px;height:100px;overflow:hidden;">
+            <img class="d-block w-100 rounded-circle" src="'.$review['photo'].'" alt="'.$review['author'].'">
+        </div>
+        <h5 class="mt-4 mb-0"><strong class="text-warning text-uppercase">'.$review['author'].'</strong></h5>
+        <h6 class="text-dark m-0">'.$stars.' - '.$review['place_name'].'</h6>
+        <p class="m-0 pt-3">'.$review['text'].'</p>
+    </div>';
+    $active = ""; // solo el primero es activo
+}
+?>
 <!DOCTYPE html>
 <html lang="en"><!-- Basic -->
 <head>
@@ -39,7 +126,7 @@
 		<nav class="navbar navbar-expand-lg navbar-light bg-light">
 			<div class="container">
 				<a class="navbar-brand" href="index.html">
-					<img src="images/logo.png" alt="Tradición para tu meza" class="mi-logo" />
+					<img src="images/Logo.png" alt="Tradición para tu meza" class="mi-logo" />
 				</a>
 				<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbars-rs-food" aria-controls="navbars-rs-food" aria-expanded="false" aria-label="Toggle navigation">
 				  <span class="navbar-toggler-icon"></span>
@@ -127,7 +214,7 @@
 			<div class="row">
 				<div class="col-md-8 ml-auto mr-auto text-center">
 					<p class="lead ">
-						" Si visitas Ameca sin provar el delicioso picón de la piconeria, es como si no hubieras visitado Ameca. "
+						" Si visitas Ameca sin probar el delicioso picón de la piconeria, es como si no hubieras visitado Ameca. "
 					</p>
 					<span class="lead">Fabiola Prado</span>
 				</div>
@@ -527,58 +614,35 @@
 	<!-- End Gallery -->
 	
 	<!-- Start Customer Reviews -->
-	<div class="customer-reviews-box">
-		<div class="container">
-			<div class="row">
-				<div class="col-lg-12">
-					<div class="heading-title text-center">
-						<h2>Opiniones de nuestros clientes</h2>
-						<p>Nuestros clientes respaldan la calidad de nuestro productos</p>
-					</div>
-				</div>
-			</div>
-			<div class="row">
-				<div class="col-md-8 mr-auto ml-auto text-center">
-					<div id="reviews" class="carousel slide" data-ride="carousel">
-						<div class="carousel-inner mt-4">
-							<div class="carousel-item text-center active">
-								<div class="img-box p-1 border rounded-circle m-auto">
-									<img class="d-block w-100 rounded-circle" src="images/quotations-button.png" alt="">
-								</div>
-								<h5 class="mt-4 mb-0"><strong class="text-warning text-uppercase">Paul Mitchel</strong></h5>
-								<h6 class="text-dark m-0">Web Developer</h6>
-								<p class="m-0 pt-3">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam eu sem tempor, varius quam at, luctus dui. Mauris magna metus, dapibus nec turpis vel, semper malesuada ante. Idac bibendum scelerisque non non purus. Suspendisse varius nibh non aliquet.</p>
-							</div>
-							<div class="carousel-item text-center">
-								<div class="img-box p-1 border rounded-circle m-auto">
-									<img class="d-block w-100 rounded-circle" src="images/quotations-button.png" alt="">
-								</div>
-								<h5 class="mt-4 mb-0"><strong class="text-warning text-uppercase">Steve Fonsi</strong></h5>
-								<h6 class="text-dark m-0">Web Designer</h6>
-								<p class="m-0 pt-3">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam eu sem tempor, varius quam at, luctus dui. Mauris magna metus, dapibus nec turpis vel, semper malesuada ante. Idac bibendum scelerisque non non purus. Suspendisse varius nibh non aliquet.</p>
-							</div>
-							<div class="carousel-item text-center">
-								<div class="img-box p-1 border rounded-circle m-auto">
-									<img class="d-block w-100 rounded-circle" src="images/quotations-button.png" alt="">
-								</div>
-								<h5 class="mt-4 mb-0"><strong class="text-warning text-uppercase">Daniel vebar</strong></h5>
-								<h6 class="text-dark m-0">Seo Analyst</h6>
-								<p class="m-0 pt-3">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam eu sem tempor, varius quam at, luctus dui. Mauris magna metus, dapibus nec turpis vel, semper malesuada ante. Idac bibendum scelerisque non non purus. Suspendisse varius nibh non aliquet.</p>
-							</div>
-						</div>
-						<a class="carousel-control-prev" href="#reviews" role="button" data-slide="prev">
-							<i class="fa fa-angle-left" aria-hidden="true"></i>
-							<span class="sr-only">Previous</span>
-						</a>
-						<a class="carousel-control-next" href="#reviews" role="button" data-slide="next">
-							<i class="fa fa-angle-right" aria-hidden="true"></i>
-							<span class="sr-only">Next</span>
-						</a>
+	 <div class="customer-reviews-box">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="heading-title text-center">
+                        <h2>Opiniones de nuestros clientes</h2>
+                        <p>Nuestros clientes respaldan la calidad de nuestros productos</p>
                     </div>
-				</div>
-			</div>
-		</div>
-	</div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-8 mr-auto ml-auto text-center">
+                    <div id="reviews" class="carousel slide" data-ride="carousel">
+                        <div class="carousel-inner mt-4">
+                            <?php echo $reviewsHtml ?: "<p>No hay reseñas disponibles</p>"; ?>
+                        </div>
+                        <a class="carousel-control-prev" href="#reviews" role="button" data-slide="prev">
+                            <i class="fa fa-angle-left" aria-hidden="true"></i>
+                            <span class="sr-only">Anterior</span>
+                        </a>
+                        <a class="carousel-control-next" href="#reviews" role="button" data-slide="next">
+                            <i class="fa fa-angle-right" aria-hidden="true"></i>
+                            <span class="sr-only">Siguiente</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 	<!-- End Customer Reviews -->
 	
 	<!-- Start Contact info -->
