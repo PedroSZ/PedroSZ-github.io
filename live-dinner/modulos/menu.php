@@ -19,7 +19,7 @@ function setActiveGroup($pages, $current_page) {
             <a class='nav-link' href='index.php'>Inicio</a>
         </li>
         <li class='nav-item <?= setActive("menu.php", $current_page) ?>'>
-            <a class='nav-link' href='menu.php'>Menu</a>
+            <a class='nav-link' href='menu.php'>Galeria</a>
         </li>
         <li class='nav-item <?= setActive("about.php", $current_page) ?>'>
             <a class='nav-link' href='about.php'>Historia</a>

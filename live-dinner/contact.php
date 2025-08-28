@@ -55,7 +55,7 @@
 		<div class="container text-center">
 			<div class="row">
 				<div class="col-lg-12">
-					<h1>Contact</h1>
+					<h1>Contactar</h1>
 				</div>
 			</div>
 		</div>
@@ -63,8 +63,8 @@
 	<!-- End All Pages -->
 	
 	<!-- Start Contact -->
-	 <div class="map-full">
-  <iframe src="mapa.html" width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+	 <div class="">
+  <img src="images/mspa.png" style="height: 100%; width: 100%;" alt="" >
 </div>
 
 	<div class="contact-box">

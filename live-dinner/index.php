@@ -2,69 +2,33 @@
 
 <?php
 // 🔑 Configuración DB
+
+
 $host = "localhost";
 $user = "root";
 $pass = "";
 $db   = "piconerialandingpagedb";
-
-// 🔑 Tu API KEY de Google Places
-$apiKey = "AIzaSyCICPVYvXHmKZnaQhWp0cwpu8VeV6brcAo";
-
-// 📍 Place IDs de tus sucursales
-$places = [
-    "ChIJc3QwbQCvKIQRU482xYocid8", // Ameca
-    "ChIJzwUqFqt3JoQRTz_JAMk4pNw", // Sucursal con más reseñas
-];
+/*
+$host   = '162.241.203.102';
+$db     = 'danie384_lapiconerialandingpagedb';
+$user   = 'danie384_user';
+$pass   = 'Piconeria2025@';
+$charset= 'utf8_spanish2_ci';
+*/
 
 // Conectar a MySQL
-$mysqli = new mysqli(hostname: $host, username: $user, password: $pass, database: $db);
+$mysqli = new mysqli($host, $user, $pass, $db);
 if ($mysqli->connect_error) {
     die("Error de conexión: " . $mysqli->connect_error);
 }
 
-// ⏳ Tiempo de vida del caché (6 horas)
-$cacheTime = 6 * 60 * 60;
-
-// Revisar si ya hay reseñas recientes
+// 🔄 Obtener reseñas guardadas en la DB (10 aleatorias)
 $reviews = [];
-$stmt = $mysqli->prepare("SELECT * FROM google_reviews WHERE fetched_at > (NOW() - INTERVAL 6 HOUR) ORDER BY RAND() LIMIT 10");
+$stmt = $mysqli->prepare("SELECT * FROM google_reviews ORDER BY RAND() LIMIT 10");
 $stmt->execute();
 $result = $stmt->get_result();
 while ($row = $result->fetch_assoc()) {
     $reviews[] = $row;
-}
-
-// Si no hay reseñas frescas, consultar a Google
-if (empty($reviews)) {
-    // Vaciar tabla antes de insertar nuevas
-    $mysqli->query("TRUNCATE TABLE google_reviews");
-
-    foreach ($places as $placeId) {
-        $url = "https://maps.googleapis.com/maps/api/place/details/json?place_id=$placeId&fields=name,rating,reviews&key=$apiKey";
-        $response = file_get_contents($url);
-        $data = json_decode($response, true);
-
-        if (!empty($data['result']['reviews'])) {
-            foreach ($data['result']['reviews'] as $review) {
-                $author = $mysqli->real_escape_string($review['author_name']);
-                $rating = intval($review['rating']);
-                $text   = $mysqli->real_escape_string($review['text']);
-                $place  = $mysqli->real_escape_string($data['result']['name'] ?? "Sucursal");
-                $photo  = $mysqli->real_escape_string($review['profile_photo_url'] ?? "images/quotations-button.png");
-
-                $mysqli->query("INSERT INTO google_reviews (place_id, author, rating, text, place_name, photo) 
-                                VALUES ('$placeId','$author','$rating','$text','$place','$photo')");
-            }
-        }
-    }
-
-    // Volver a cargar desde la DB
-    $stmt = $mysqli->prepare("SELECT * FROM google_reviews ORDER BY RAND() LIMIT 10");
-    $stmt->execute();
-    $result = $stmt->get_result();
-    while ($row = $result->fetch_assoc()) {
-        $reviews[] = $row;
-    }
 }
 
 // ⭐ Generar HTML para el carrusel
