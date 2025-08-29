@@ -2,18 +2,18 @@
 
 <?php
 // 🔑 Configuración DB
+$host = "localhost";
+$user = "root";
+$pass = "";
+$db   = "piconerialandingpagedb";
 
+/*
 $host   = '162.241.203.102';
 $db     = 'danie384_lapiconerialandingpagedb';
 $user   = 'danie384_user';
 $pass   = 'Piconeria2025@';
 $charset= 'utf8_spanish2_ci';
-/*
 
-$host = "localhost";
-$user = "root";
-$pass = "";
-$db   = "piconerialandingpagedb";
 */
 
 // Conectar a MySQL
@@ -76,7 +76,7 @@ foreach ($reviews as $review) {
     <link rel="stylesheet" href="css/responsive.css">
     <!-- Custom CSS -->
     <link rel="stylesheet" href="css/custom.css">
-
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" rel="stylesheet">
     <!--[if lt IE 9]>
       <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
       <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
@@ -199,330 +199,102 @@ foreach ($reviews as $review) {
 				</div>
 			</div>
 			
-			<div class="row inner-menu-box">
-				<div class="col-3">
-					<div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
-						<a class="nav-link active" id="v-pills-home-tab" data-toggle="pill" href="#v-pills-home" role="tab" aria-controls="v-pills-home" aria-selected="true">Mostrar Todo</a>
-						<a class="nav-link" id="v-pills-profile-tab" data-toggle="pill" href="#v-pills-profile" role="tab" aria-controls="v-pills-profile" aria-selected="false">Picones</a>
-						<a class="nav-link" id="v-pills-messages-tab" data-toggle="pill" href="#v-pills-messages" role="tab" aria-controls="v-pills-messages" aria-selected="false">Pan Dulce</</a>
-						<a class="nav-link" id="v-pills-messages2-tab" data-toggle="pill" href="#v-pills-messages2" role="tab" aria-controls="v-pills-messages2" aria-selected="false">Galletas</</a>
-						<a class="nav-link" id="v-pills-settings-tab" data-toggle="pill" href="#v-pills-settings" role="tab" aria-controls="v-pills-settings" aria-selected="false">Bebidas</a>
-					</div>
-				</div>
-				
-				<div class="col-9">
-					<div class="tab-content" id="v-pills-tabContent">
-						<div class="tab-pane fade show active" id="v-pills-home" role="tabpanel" aria-labelledby="v-pills-home-tab">
-							<div class="row">
-								<div class="col-lg-4 col-md-6 special-grid drinks">
-									<div class="gallery-single fix">
-										<img src="images/img-01.jpg" class="img-fluid" alt="Image">
-										<div class="why-text">
-											<h4>Special Drinks 1</h4>
-											<p>Sed id magna vitae eros sagittis euismod.</p>
-											<h5> $7.79</h5>
-										</div>
-									</div>
-								</div>
-								
-								<div class="col-lg-4 col-md-6 special-grid drinks">
-									<div class="gallery-single fix">
-										<img src="images/img-02.jpg" class="img-fluid" alt="Image">
-										<div class="why-text">
-											<h4>Special Drinks 2</h4>
-											<p>Sed id magna vitae eros sagittis euismod.</p>
-											<h5> $9.79</h5>
-										</div>
-									</div>
-								</div>
-								
-								<div class="col-lg-4 col-md-6 special-grid drinks">
-									<div class="gallery-single fix">
-										<img src="images/img-03.jpg" class="img-fluid" alt="Image">
-										<div class="why-text">
-											<h4>Special Drinks 3</h4>
-											<p>Sed id magna vitae eros sagittis euismod.</p>
-											<h5> $10.79</h5>
-										</div>
-									</div>
-								</div>
-								
-								<div class="col-lg-4 col-md-6 special-grid lunch">
-									<div class="gallery-single fix">
-										<img src="images/img-04.jpg" class="img-fluid" alt="Image">
-										<div class="why-text">
-											<h4>Special Lunch 1</h4>
-											<p>Sed id magna vitae eros sagittis euismod.</p>
-											<h5> $15.79</h5>
-										</div>
-									</div>
-								</div>
-								
-								<div class="col-lg-4 col-md-6 special-grid lunch">
-									<div class="gallery-single fix">
-										<img src="images/img-05.jpg" class="img-fluid" alt="Image">
-										<div class="why-text">
-											<h4>Special Lunch 2</h4>
-											<p>Sed id magna vitae eros sagittis euismod.</p>
-											<h5> $18.79</h5>
-										</div>
-									</div>
-								</div>
-								
-								<div class="col-lg-4 col-md-6 special-grid lunch">
-									<div class="gallery-single fix">
-										<img src="images/img-06.jpg" class="img-fluid" alt="Image">
-										<div class="why-text">
-											<h4>Special Lunch 3</h4>
-											<p>Sed id magna vitae eros sagittis euismod.</p>
-											<h5> $20.79</h5>
-										</div>
-									</div>
-								</div>
-								
-								<div class="col-lg-4 col-md-6 special-grid dinner">
-									<div class="gallery-single fix">
-										<img src="images/img-07.jpg" class="img-fluid" alt="Image">
-										<div class="why-text">
-											<h4>Special Dinner 1</h4>
-											<p>Sed id magna vitae eros sagittis euismod.</p>
-											<h5> $25.79</h5>
-										</div>
-									</div>
-								</div>
-								
-								<div class="col-lg-4 col-md-6 special-grid dinner">
-									<div class="gallery-single fix">
-										<img src="images/img-08.jpg" class="img-fluid" alt="Image">
-										<div class="why-text">
-											<h4>Special Dinner 2</h4>
-											<p>Sed id magna vitae eros sagittis euismod.</p>
-											<h5> $22.79</h5>
-										</div>
-									</div>
-								</div>
-								
-								<div class="col-lg-4 col-md-6 special-grid dinner">
-									<div class="gallery-single fix">
-										<img src="images/img-09.jpg" class="img-fluid" alt="Image">
-										<div class="why-text">
-											<h4>Special Dinner 3</h4>
-											<p>Sed id magna vitae eros sagittis euismod.</p>
-											<h5> $24.79</h5>
-										</div>
-									</div>
-								</div>
+			<?php
+// Lista de categorías (para el menú lateral)
+$categorias = [
+    "home"      => "Mostrar Todo",
+    "profile"   => "Picones",
+    "messages"  => "Pan Dulce",
+    "messages2" => "Galletas",
+    "settings"  => "Bebidas"
+];
 
-								<div class="col-lg-4 col-md-6 special-grid dinner">
-									<div class="gallery-single fix">
-										<img src="images/img-54.jpg" class="img-fluid" alt="Image">
-										<div class="why-text">
-											<h4>Special Dinner 3</h4>
-											<p>Sed id magna vitae eros sagittis euismod.</p>
-											<h5> $24.79</h5>
-										</div>
-									</div>
-								</div>
-								<div class="col-lg-4 col-md-6 special-grid dinner">
-									<div class="gallery-single fix">
-										<img src="images/img-51.jpg" class="img-fluid" alt="Image">
-										<div class="why-text">
-											<h4>Special Dinner 3</h4>
-											<p>Sed id magna vitae eros sagittis euismod.</p>
-											<h5> $24.79</h5>
-										</div>
-									</div>
-								</div>
-								<div class="col-lg-4 col-md-6 special-grid dinner">
-									<div class="gallery-single fix">
-										<img src="images/img-49.jpg" class="img-fluid" alt="Image">
-										<div class="why-text">
-											<h4>Special Dinner 3</h4>
-											<p>Sed id magna vitae eros sagittis euismod.</p>
-											<h5> $24.79</h5>
-										</div>
-									</div>
-								</div>
+// Lista de productos
+$productos = [
+    ["img" => "images/img-01.jpg", "titulo" => "Special Drinks 1", "desc" => "Sed id magna vitae eros sagittis euismod.", "precio" => "7.79", "cat" => "profile"],
+    ["img" => "images/img-02.jpg", "titulo" => "Special Drinks 2", "desc" => "Sed id magna vitae eros sagittis euismod.", "precio" => "9.79", "cat" => "profile"],
+    ["img" => "images/img-03.jpg", "titulo" => "Special Drinks 3", "desc" => "Sed id magna vitae eros sagittis euismod.", "precio" => "10.79", "cat" => "profile"],
+    
+    ["img" => "images/img-04.jpg", "titulo" => "Special Lunch 1", "desc" => "Sed id magna vitae eros sagittis euismod.", "precio" => "15.79", "cat" => "messages"],
+    ["img" => "images/img-05.jpg", "titulo" => "Special Lunch 2", "desc" => "Sed id magna vitae eros sagittis euismod.", "precio" => "18.79", "cat" => "messages"],
+    ["img" => "images/img-06.jpg", "titulo" => "Special Lunch 3", "desc" => "Sed id magna vitae eros sagittis euismod.", "precio" => "20.79", "cat" => "messages"],
 
+    ["img" => "images/img-50.jpg", "titulo" => "Special Galleta 1", "desc" => "Sed id magna vitae eros sagittis euismod.", "precio" => "15.79", "cat" => "messages2"],
+    ["img" => "images/img-51.jpg", "titulo" => "Special Galleta 2", "desc" => "Sed id magna vitae eros sagittis euismod.", "precio" => "18.79", "cat" => "messages2"],
+    ["img" => "images/img-52.jpg", "titulo" => "Special Galleta 3", "desc" => "Sed id magna vitae eros sagittis euismod.", "precio" => "20.79", "cat" => "messages2"],
 
+    ["img" => "images/img-07.jpg", "titulo" => "Special Dinner 1", "desc" => "Sed id magna vitae eros sagittis euismod.", "precio" => "25.79", "cat" => "settings"],
+    ["img" => "images/img-08.jpg", "titulo" => "Special Dinner 2", "desc" => "Sed id magna vitae eros sagittis euismod.", "precio" => "22.79", "cat" => "settings"],
+    ["img" => "images/img-09.jpg", "titulo" => "Special Dinner 3", "desc" => "Sed id magna vitae eros sagittis euismod.", "precio" => "24.79", "cat" => "settings"]
+];
+?>
 
+<div class="row inner-menu-box">
+    <!-- Menú lateral -->
+    <div class="col-3">
+        <div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
+            <?php foreach ($categorias as $id => $nombre): ?>
+                <a class="nav-link <?= $id == 'home' ? 'active' : '' ?>" 
+                   id="v-pills-<?= $id ?>-tab" 
+                   data-toggle="pill" 
+                   href="#v-pills-<?= $id ?>" 
+                   role="tab" 
+                   aria-controls="v-pills-<?= $id ?>" 
+                   aria-selected="<?= $id == 'home' ? 'true' : 'false' ?>">
+                    <?= $nombre ?>
+                </a>
+            <?php endforeach; ?>
+        </div>
+    </div>
 
+    <!-- Contenido -->
+    <div class="col-9">
+        <div class="tab-content" id="v-pills-tabContent">
 
+            <!-- Tab "Mostrar Todo" -->
+            <div class="tab-pane fade show active" id="v-pills-home" role="tabpanel">
+                <div class="row">
+                    <?php foreach ($productos as $p): ?>
+                        <div class="col-lg-4 col-md-6 special-grid">
+                            <div class="gallery-single fix">
+                                <img src="<?= $p['img'] ?>" class="img-fluid" alt="<?= $p['titulo'] ?>">
+                                <div class="why-text">
+                                    <h4><?= $p['titulo'] ?></h4>
+                                    <p><?= $p['desc'] ?></p>
+                                    <h5>$<?= $p['precio'] ?></h5>
+                                </div>
+                            </div>
+                        </div>
+                    <?php endforeach; ?>
+                </div>
+            </div>
 
+            <!-- Tabs por categoría -->
+            <?php foreach ($categorias as $id => $nombre): if ($id == 'home') continue; ?>
+                <div class="tab-pane fade" id="v-pills-<?= $id ?>" role="tabpanel">
+                    <div class="row">
+                        <?php foreach ($productos as $p): ?>
+                            <?php if ($p['cat'] == $id): ?>
+                                <div class="col-lg-4 col-md-6 special-grid">
+                                    <div class="gallery-single fix">
+                                        <img src="<?= $p['img'] ?>" class="img-fluid" alt="<?= $p['titulo'] ?>">
+                                        <div class="why-text">
+                                            <h4><?= $p['titulo'] ?></h4>
+                                            <p><?= $p['desc'] ?></p>
+                                            <h5>$<?= $p['precio'] ?></h5>
+                                        </div>
+                                    </div>
+                                </div>
+                            <?php endif; ?>
+                        <?php endforeach; ?>
+                    </div>
+                </div>
+            <?php endforeach; ?>
 
+        </div>
+    </div>
+</div>
 
-
-
-
-
-							</div>
-
-
-
-
-
-
-
-
-
-
-							
-						</div>
-						<div class="tab-pane fade" id="v-pills-profile" role="tabpanel" aria-labelledby="v-pills-profile-tab">
-							<div class="row">
-								<div class="col-lg-4 col-md-6 special-grid drinks">
-									<div class="gallery-single fix">
-										<img src="images/img-01.jpg" class="img-fluid" alt="Image">
-										<div class="why-text">
-											<h4>Special Drinks 1</h4>
-											<p>Sed id magna vitae eros sagittis euismod.</p>
-											<h5> $7.79</h5>
-										</div>
-									</div>
-								</div>
-								
-								<div class="col-lg-4 col-md-6 special-grid drinks">
-									<div class="gallery-single fix">
-										<img src="images/img-02.jpg" class="img-fluid" alt="Image">
-										<div class="why-text">
-											<h4>Special Drinks 2</h4>
-											<p>Sed id magna vitae eros sagittis euismod.</p>
-											<h5> $9.79</h5>
-										</div>
-									</div>
-								</div>
-								
-								<div class="col-lg-4 col-md-6 special-grid drinks">
-									<div class="gallery-single fix">
-										<img src="images/img-03.jpg" class="img-fluid" alt="Image">
-										<div class="why-text">
-											<h4>Special Drinks 3</h4>
-											<p>Sed id magna vitae eros sagittis euismod.</p>
-											<h5> $10.79</h5>
-										</div>
-									</div>
-								</div>
-							</div>
-							
-						</div>
-						<div class="tab-pane fade" id="v-pills-messages" role="tabpanel" aria-labelledby="v-pills-messages-tab">
-							<div class="row">
-								<div class="col-lg-4 col-md-6 special-grid lunch">
-									<div class="gallery-single fix">
-										<img src="images/img-04.jpg" class="img-fluid" alt="Image">
-										<div class="why-text">
-											<h4>Special Lunch 1</h4>
-											<p>Sed id magna vitae eros sagittis euismod.</p>
-											<h5> $15.79</h5>
-										</div>
-									</div>
-								</div>
-								
-								<div class="col-lg-4 col-md-6 special-grid lunch">
-									<div class="gallery-single fix">
-										<img src="images/img-05.jpg" class="img-fluid" alt="Image">
-										<div class="why-text">
-											<h4>Special Lunch 2</h4>
-											<p>Sed id magna vitae eros sagittis euismod.</p>
-											<h5> $18.79</h5>
-										</div>
-									</div>
-								</div>
-								
-								<div class="col-lg-4 col-md-6 special-grid lunch">
-									<div class="gallery-single fix">
-										<img src="images/img-06.jpg" class="img-fluid" alt="Image">
-										<div class="why-text">
-											<h4>Special Lunch 3</h4>
-											<p>Sed id magna vitae eros sagittis euismod.</p>
-											<h5> $20.79</h5>
-										</div>
-									</div>
-								</div>
-							</div>
-						</div>
-
-
-
-<div class="tab-pane fade" id="v-pills-messages2" role="tabpanel" aria-labelledby="v-pills-messages2-tab">
-							<div class="row">
-								<div class="col-lg-4 col-md-6 special-grid lunch">
-									<div class="gallery-single fix">
-										<img src="images/img-50.jpg" class="img-fluid" alt="Image">
-										<div class="why-text">
-											<h4>Special Lunch 1</h4>
-											<p>Sed id magna vitae eros sagittis euismod.</p>
-											<h5> $15.79</h5>
-										</div>
-									</div>
-								</div>
-								
-								<div class="col-lg-4 col-md-6 special-grid lunch">
-									<div class="gallery-single fix">
-										<img src="images/img-51.jpg" class="img-fluid" alt="Image">
-										<div class="why-text">
-											<h4>Special Lunch 2</h4>
-											<p>Sed id magna vitae eros sagittis euismod.</p>
-											<h5> $18.79</h5>
-										</div>
-									</div>
-								</div>
-								
-								<div class="col-lg-4 col-md-6 special-grid lunch">
-									<div class="gallery-single fix">
-										<img src="images/img-52.jpg" class="img-fluid" alt="Image">
-										<div class="why-text">
-											<h4>Special Lunch 3</h4>
-											<p>Sed id magna vitae eros sagittis euismod.</p>
-											<h5> $20.79</h5>
-										</div>
-									</div>
-								</div>
-							</div>
-						</div>
-
-
-
-
-						<div class="tab-pane fade" id="v-pills-settings" role="tabpanel" aria-labelledby="v-pills-settings-tab">
-							<div class="row">
-								<div class="col-lg-4 col-md-6 special-grid dinner">
-									<div class="gallery-single fix">
-										<img src="images/img-07.jpg" class="img-fluid" alt="Image">
-										<div class="why-text">
-											<h4>Special Dinner 1</h4>
-											<p>Sed id magna vitae eros sagittis euismod.</p>
-											<h5> $25.79</h5>
-										</div>
-									</div>
-								</div>
-								
-								<div class="col-lg-4 col-md-6 special-grid dinner">
-									<div class="gallery-single fix">
-										<img src="images/img-08.jpg" class="img-fluid" alt="Image">
-										<div class="why-text">
-											<h4>Special Dinner 2</h4>
-											<p>Sed id magna vitae eros sagittis euismod.</p>
-											<h5> $22.79</h5>
-										</div>
-									</div>
-								</div>
-								
-								<div class="col-lg-4 col-md-6 special-grid dinner">
-									<div class="gallery-single fix">
-										<img src="images/img-09.jpg" class="img-fluid" alt="Image">
-										<div class="why-text">
-											<h4>Special Dinner 3</h4>
-											<p>Sed id magna vitae eros sagittis euismod.</p>
-											<h5> $24.79</h5>
-										</div>
-									</div>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
 			
 		</div>
 	</div>
@@ -577,7 +349,7 @@ foreach ($reviews as $review) {
 	</div>
 	<!-- End Gallery -->
 	
-	<!-- Start Customer Reviews -->
+	<!-- ---------------------------------------------------------------Start Customer Reviews -->
 	 <div class="customer-reviews-box">
         <div class="container">
             <div class="row">
@@ -607,42 +379,78 @@ foreach ($reviews as $review) {
             </div>
         </div>
     </div>
-	<!-- End Customer Reviews -->
+	<!-- ---------------------------------------------------------------------End Customer Reviews -->
 	
 	<!-- Start Contact info -->
 	<div class="contact-imfo-box">
-		<div class="container">
-			<div class="row">
-				<div class="col-md-4 arrow-right">
-					<i class="fa fa-volume-control-phone"></i>
-					<div class="overflow-hidden">
-						<h4>Phone</h4>
-						<p class="lead">
-							+01 123-456-4590
-						</p>
-					</div>
-				</div>
-				<div class="col-md-4 arrow-right">
-					<i class="fa fa-envelope"></i>
-					<div class="overflow-hidden">
-						<h4>Email</h4>
-						<p class="lead">
-							yourmail@gmail.com
-						</p>
-					</div>
-				</div>
-				<div class="col-md-4">
-					<i class="fa fa-map-marker"></i>
-					<div class="overflow-hidden">
-						<h4>Location</h4>
-						<p class="lead">
-							800, Lorem Street, US
-						</p>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
+  <div class="container">
+    <div id="sucursales" class="row">
+      <!-- Aquí se va a mostrar la info dinámica -->
+    </div>
+  </div>
+</div>
+
+<script>
+// Lista de sucursales (puedes agregar todas las que quieras)
+const sucursales = [
+  {
+    telefono: "+52 375 100 3330",
+    email: "lapiconeria@gmail.com",
+    direccion: "Independencia 49B, 46600 Ameca, Jal."
+  },
+  {
+    telefono: "+52 375 100 3330",
+    email: "lapiconeria@gmail.com",
+    direccion: "Av. Patria Pnte. 204, 46600 Ameca, Jal."
+  },
+  {
+    telefono: "+52 375 100 3330",
+    email: "lapiconeria@gmail.com",
+    direccion: "Av Valle de Atemajac 1930, Jardines del Valle, 45138 Zapopan, Jal."
+  }
+];
+
+let index = 0;
+const contenedor = document.getElementById("sucursales");
+
+// Función para renderizar la info de una sucursal
+function mostrarSucursal(idx) {
+  const suc = sucursales[idx];
+  contenedor.innerHTML = `
+    <div class="col-md-4 arrow-right">
+      <i class="fa fa-volume-control-phone"></i>
+      <div class="overflow-hidden">
+        <h4>Teléfono:</h4>
+        <p class="lead">${suc.telefono}</p>
+      </div>
+    </div>
+    <div class="col-md-4 arrow-right">
+      <i class="fa fa-envelope"></i>
+      <div class="overflow-hidden">
+        <h4>Email</h4>
+        <p class="lead">${suc.email}</p>
+      </div>
+    </div>
+    <div class="col-md-4">
+      <i class="fa fa-map-marker"></i>
+      <div class="overflow-hidden">
+        <h4>Location</h4>
+        <p class="lead">${suc.direccion}</p>
+      </div>
+    </div>
+  `;
+}
+
+// Mostrar la primera sucursal
+mostrarSucursal(index);
+
+// Cambiar cada 2 segundos
+setInterval(() => {
+  index = (index + 1) % sucursales.length; 
+  mostrarSucursal(index);
+}, 2000);
+</script>
+
 	<!-- End Contact info -->
 	
 	<!-- Start Footer -->
@@ -662,19 +470,53 @@ foreach ($reviews as $review) {
 							<div class="clearfix"></div>
 						</form>
 					</div>
-					<ul class="list-inline f-social">
-						<li class="list-inline-item"><a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
-						<li class="list-inline-item"><a href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
-						<li class="list-inline-item"><a href="#"><i class="fa fa-linkedin" aria-hidden="true"></i></a></li>
-						<li class="list-inline-item"><a href="#"><i class="fa fa-google-plus" aria-hidden="true"></i></a></li>
-						<li class="list-inline-item"><a href="#"><i class="fa fa-instagram" aria-hidden="true"></i></a></li>
-					</ul>
+
+					
+<ul class="list-inline">
+  <!-- Facebook (igual en FA4 y FA6) -->
+  <li class="list-inline-item">
+    <a href="#">
+      <i class="fa fa-facebook fa-brands fa-facebook-f"></i>
+    </a>
+  </li>
+
+  <!-- X (si no carga FA6, cae en Twitter de FA4) -->
+  <li class="list-inline-item">
+    <a href="#">
+      <i class="fa fa-twitter fa-brands fa-x-twitter"></i>
+    </a>
+  </li>
+
+  <!-- LinkedIn -->
+  <li class="list-inline-item">
+    <a href="#">
+      <i class="fa fa-linkedin fa-brands fa-linkedin-in"></i>
+    </a>
+  </li>
+
+  <!-- TikTok (si no carga FA6, cae en Google+ de FA4) -->
+  <li class="list-inline-item">
+    <a href="#">
+      <i class="fa fa-google-plus fa-brands fa-tiktok"></i>
+    </a>
+  </li>
+
+  <!-- Instagram -->
+  <li class="list-inline-item">
+    <a href="#">
+      <i class="fa fa-instagram fa-brands fa-instagram"></i>
+    </a>
+  </li>
+</ul>
+
+
+					
 				</div>
 				<div class="col-lg-3 col-md-6">
 					<h3>Información de contacto</h3>
 					<p class="lead">Independencia 49B, 46600 Ameca, Jal.</p>
 					<p class="lead"><a href="#">+52 375 100 3330</a></p>
-					<p><a href="#"> servicioalcliente@lapiconeria.com</a></p>
+					<p><a href="#"> lapiconeria@gmail.com</a></p>
 				</div>
 				<div class="col-lg-3 col-md-6">
 					<h3>Horarios de Atención</h3>

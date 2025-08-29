@@ -782,6 +782,36 @@ button:focus{
 	font-size: 16px;
 }
 
+
+.list-inline-item a i {
+  font-size: 32px;         /* Tamaño más grande */
+  color: #ffffff;          /* Color base (blanco) */
+  transition: 0.3s ease;   /* Animación suave */
+  padding: 5px;
+}
+
+/* Hover con colores oficiales */
+.list-inline-item a .fa-facebook-f:hover {
+  color: #1877F2;  /* Azul Facebook */
+}
+
+.list-inline-item a .fa-x-twitter:hover {
+  color: #000000;  /* Negro X (Twitter nuevo) */
+}
+
+.list-inline-item a .fa-linkedin-in:hover {
+  color: #0A66C2;  /* Azul LinkedIn */
+}
+
+.list-inline-item a .fa-tiktok:hover {
+  color: #EE1D52;  /* Rojo TikTok */
+}
+
+.list-inline-item a .fa-instagram:hover {
+  color: #E4405F;  /* Rosa Instagram */
+}
+
+
 /*------------------------------------------------------------------
     All Pages
 -------------------------------------------------------------------*/
