@@ -1,5 +1,6 @@
 
 
+<<<<<<< HEAD
 <?php
 // 🔑 Configuración DB
 $host = "localhost";
@@ -49,6 +50,9 @@ foreach ($reviews as $review) {
     $active = ""; // solo el primero es activo
 }
 ?>
+=======
+
+>>>>>>> f72454c76a4a77413d870d13b23470599acea745
 <!DOCTYPE html>
 <html lang="en"><!-- Basic -->
 <head>
