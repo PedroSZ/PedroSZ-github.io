@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 28-08-2025 a las 15:15:26
+-- Tiempo de generación: 30-08-2025 a las 01:53:33
 -- Versión del servidor: 10.4.32-MariaDB
 -- Versión de PHP: 8.2.12
 
@@ -20,6 +20,29 @@ SET time_zone = "+00:00";
 --
 -- Base de datos: `piconerialandingpagedb`
 --
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `categorias`
+--
+
+CREATE TABLE `categorias` (
+  `id` int(11) NOT NULL,
+  `nombre` varchar(100) NOT NULL,
+  `slug` varchar(50) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Volcado de datos para la tabla `categorias`
+--
+
+INSERT INTO `categorias` (`id`, `nombre`, `slug`) VALUES
+(1, 'TODO', 'home'),
+(2, 'PICON', 'EL MEJOR'),
+(3, 'GALLETAS', 'DELICIOSAS'),
+(4, 'OTROS PRODUCTOS', 'PARA ACOMPAÑAR'),
+(5, 'DE TEMPORADA', 'FESTEJAMOS CONTIGO');
 
 -- --------------------------------------------------------
 
@@ -51,9 +74,41 @@ INSERT INTO `google_reviews` (`id`, `place_id`, `author`, `rating`, `text`, `pla
 (6, 'ChIJzwUqFqt3JoQRTz_JAMk4pNw', 'Trigiovision Ameca', 5, 'If you want to taste the original and delicious flavor of His Majesty \"El Picón\", just go to Independencia 49b and there you will find them warm, fresh from the oven, I, your friend Trigio, recommend them to you. Go for it, Bagres!', 'La Piconería Ameca', 'https://lh3.googleusercontent.com/a-/ALV-UjWvT_VVX_o9HuGHD9TR17DuAX_vSGpehLlH7ngJ7jA5eB_asyGP=s128-c0x00000000-cc-rp-mo-ba4', '2025-08-28 02:09:29'),
 (7, 'ChIJzwUqFqt3JoQRTz_JAMk4pNw', 'Ana Karen Valdivia', 5, 'Without a doubt the best picones, delicious and excellent service ✨', 'La Piconería Ameca', 'https://lh3.googleusercontent.com/a/ACg8ocJQDzWxuqxmoUttyPXNHHa-BF8imuHWCLwF0M32cht5tuQGYg=s128-c0x00000000-cc-rp-mo', '2025-08-28 02:09:29');
 
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `productos`
+--
+
+CREATE TABLE `productos` (
+  `id` int(11) NOT NULL,
+  `nombre` varchar(100) NOT NULL,
+  `descripcion` text DEFAULT NULL,
+  `precio` decimal(10,2) DEFAULT NULL,
+  `imagen` varchar(255) DEFAULT NULL,
+  `categoria_id` int(11) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Volcado de datos para la tabla `productos`
+--
+
+INSERT INTO `productos` (`id`, `nombre`, `descripcion`, `precio`, `imagen`, `categoria_id`) VALUES
+(1, 'PICON', 'PICON CHICO', 17.00, 'images/img-03.jpg', 1),
+(2, 'PICON JUMBO', 'PARA DISFRUTAR EN FAMILIA', 75.00, 'uploads/1756436807_img-02.jpg', 2),
+(3, 'PICON-GIFT', 'REGALANDO SABOR', 120.00, 'uploads/1756437151_img-01.jpg', 5),
+(4, 'GALLETAS NAVIDEÑAS', 'FESTEJANDO CON AMOR', 50.00, 'uploads/1756438160_img-49.jpg', 5);
+
 --
 -- Índices para tablas volcadas
 --
+
+--
+-- Indices de la tabla `categorias`
+--
+ALTER TABLE `categorias`
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `slug` (`slug`);
 
 --
 -- Indices de la tabla `google_reviews`
@@ -62,14 +117,43 @@ ALTER TABLE `google_reviews`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indices de la tabla `productos`
+--
+ALTER TABLE `productos`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `categoria_id` (`categoria_id`);
+
+--
 -- AUTO_INCREMENT de las tablas volcadas
 --
+
+--
+-- AUTO_INCREMENT de la tabla `categorias`
+--
+ALTER TABLE `categorias`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT de la tabla `google_reviews`
 --
 ALTER TABLE `google_reviews`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+
+--
+-- AUTO_INCREMENT de la tabla `productos`
+--
+ALTER TABLE `productos`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+
+--
+-- Restricciones para tablas volcadas
+--
+
+--
+-- Filtros para la tabla `productos`
+--
+ALTER TABLE `productos`
+  ADD CONSTRAINT `productos_ibfk_1` FOREIGN KEY (`categoria_id`) REFERENCES `categorias` (`id`) ON DELETE CASCADE;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

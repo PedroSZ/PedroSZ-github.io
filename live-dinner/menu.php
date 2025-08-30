@@ -1,34 +1,26 @@
 <?php
 // Conexión a la base de datos
 $conexion = new mysqli("localhost", "root", "", "piconerialandingpagedb");
+if ($conexion->connect_error) { die("Error de conexión: " . $conexion->connect_error); }
 
-if ($conexion->connect_error) {
-    die("Error de conexión: " . $conexion->connect_error);
-}
-
-// Traer categorías
-$sqlCat = "SELECT * FROM categorias";
+// Traer categorías (aseguramos un orden estable)
+$sqlCat = "SELECT * FROM categorias ORDER BY id ASC";
 $resCat = $conexion->query($sqlCat);
 
 $categorias = [];
-if ($resCat->num_rows > 0) {
-    while($row = $resCat->fetch_assoc()) {
-        $categorias[] = $row;
-    }
+if ($resCat && $resCat->num_rows > 0) {
+    while($row = $resCat->fetch_assoc()) { $categorias[] = $row; }
 }
 
-// Traer productos
+// Traer productos (no hace falta JOIN para filtrar por ID)
 $sqlProd = "SELECT * FROM productos";
 $resProd = $conexion->query($sqlProd);
 
 $productos = [];
-if ($resProd->num_rows > 0) {
-    while($row = $resProd->fetch_assoc()) {
-        $productos[] = $row;
-    }
+if ($resProd && $resProd->num_rows > 0) {
+    while($row = $resProd->fetch_assoc()) { $productos[] = $row; }
 }
 ?>
-
 
 <!DOCTYPE html>
 <html lang="en"><!-- Basic -->
@@ -64,38 +56,31 @@ if ($resProd->num_rows > 0) {
     <![endif]-->
 
 </head>
-
 <body>
-	<!-- Start header -->
 	<header class="top-navbar">
 		<nav class="navbar navbar-expand-lg navbar-light bg-light">
 			<div class="container">
 				<a class="navbar-brand" href="index.html">
-					<img src="images/logo.png" alt="Tradición para tu meza" class="mi-logo" />
+					<img src="images/logo.png" alt="Tradición para tu mesa" class="mi-logo" />
 				</a>
 				<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbars-rs-food" aria-controls="navbars-rs-food" aria-expanded="false" aria-label="Toggle navigation">
 				  <span class="navbar-toggler-icon"></span>
 				</button>
 				<?php include_once "modulos/menu.php"; ?>
-				
 			</div>
 		</nav>
 	</header>
-	<!-- End header -->
 	
-	<!-- Start All Pages -->
 	<div class="all-page-title page-breadcrumb">
 		<div class="container text-center">
 			<div class="row">
 				<div class="col-lg-12">
-					<h1>Galeria</h1>
+					<h1>Galería</h1>
 				</div>
 			</div>
 		</div>
 	</div>
-	<!-- End All Pages -->
 	
-	<!-- Start Menu -->
 	<div class="menu-box">
 		<div class="container">
 			<div class="row">
@@ -107,236 +92,74 @@ if ($resProd->num_rows > 0) {
 				</div>
 			</div>
 			
-							<div class="row inner-menu-box">
-    <!-- Menú lateral -->
-    <div class="col-3">
-        <div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
-            <?php foreach ($categorias as $index => $cat): ?>
-                <a class="nav-link <?= $index == 0 ? 'active' : '' ?>"
-                   id="v-pills-<?= $cat['slug'] ?>-tab"
-                   data-toggle="pill"
-                   href="#v-pills-<?= $cat['slug'] ?>"
-                   role="tab"
-                   aria-controls="v-pills-<?= $cat['slug'] ?>"
-                   aria-selected="<?= $index == 0 ? 'true' : 'false' ?>">
-                    <?= $cat['nombre'] ?>
-                </a>
-            <?php endforeach; ?>
-        </div>
-    </div>
+			<div class="row inner-menu-box">
+			    <!-- Menú lateral -->
+			    <div class="col-12 col-md-3 mb-3 mb-md-0">
+			        <div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
+			            <?php foreach ($categorias as $index => $cat): 
+                            // Usamos un ID seguro basado en el ID numérico (no en el slug)
+                            $tabId = 'v-pills-cat-' . (int)$cat['id'];
+                        ?>
+			                <a class="nav-link <?= $index == 0 ? 'active' : '' ?>"
+			                   id="<?= $tabId ?>-tab"
+			                   data-toggle="pill"
+			                   href="#<?= $tabId ?>"
+			                   role="tab"
+			                   aria-controls="<?= $tabId ?>"
+			                   aria-selected="<?= $index == 0 ? 'true' : 'false' ?>">
+			                    <?= htmlspecialchars($cat['nombre'] ?? '') ?>
+			                </a>
+			            <?php endforeach; ?>
+			        </div>
+			    </div>
 
-    <!-- Contenido -->
-    <div class="col-9">
-        <div class="tab-content" id="v-pills-tabContent">
+			    <!-- Contenido -->
+			    <div class="col-12 col-md-9">
+			        <div class="tab-content" id="v-pills-tabContent">
 
-            <?php foreach ($categorias as $index => $cat): ?>
-                <div class="tab-pane fade <?= $index == 0 ? 'show active' : '' ?>" 
-                     id="v-pills-<?= $cat['slug'] ?>" role="tabpanel">
+			            <?php foreach ($categorias as $index => $cat):
+                            $tabId = 'v-pills-cat-' . (int)$cat['id'];
+                            $esTodo = isset($cat['slug']) && strtolower($cat['slug']) === 'home'; // "TODO"
+                        ?>
+			                <div class="tab-pane fade <?= $index == 0 ? 'show active' : '' ?>" 
+			                     id="<?= $tabId ?>" role="tabpanel" aria-labelledby="<?= $tabId ?>-tab">
 
-                    <div class="row">
-                        <?php foreach ($productos as $p): ?>
-                            <?php if ($cat['slug'] == 'home' || $p['categoria'] == $cat['slug']): ?>
-                                <div class="col-lg-4 col-md-6 special-grid">
-                                    <div class="gallery-single fix">
-                                        <img src="<?= $p['imagen'] ?>" class="img-fluid" alt="<?= $p['nombre'] ?>">
-                                        <div class="why-text">
-                                            <h4><?= $p['nombre'] ?></h4>
-                                            <p><?= $p['descripcion'] ?></p>
-                                            <h5>$<?= $p['precio'] ?></h5>
+			                    <div class="row">
+			                        <?php
+                                    $hayProductos = false;
+			                        foreach ($productos as $p):
+                                        $pertenece = $esTodo || ((int)$p['categoria_id'] === (int)$cat['id']);
+                                        if ($pertenece):
+                                            $hayProductos = true; ?>
+			                                <div class="col-lg-4 col-md-6 mb-4">
+			                                    <div class="gallery-single fix">
+			                                        <img src="<?= htmlspecialchars($p['imagen'] ?? '') ?>" class="img-fluid" alt="<?= htmlspecialchars($p['nombre'] ?? '') ?>">
+			                                        <div class="why-text">
+			                                            <h4><?= htmlspecialchars($p['nombre'] ?? '') ?></h4>
+			                                            <p><?= htmlspecialchars($p['descripcion'] ?? '') ?></p>
+			                                            <h5>$<?= number_format((float)$p['precio'], 2) ?></h5>
+			                                        </div>
+			                                    </div>
+			                                </div>
+			                            <?php endif; 
+                                    endforeach; 
+                                    if (!$hayProductos): ?>
+                                        <div class="col-12">
+                                            <p class="text-muted mb-0">No hay productos en esta categoría.</p>
                                         </div>
-                                    </div>
-                                </div>
-                            <?php endif; ?>
-                        <?php endforeach; ?>
-                    </div>
+                                    <?php endif; ?>
+			                    </div>
 
-                </div>
-            <?php endforeach; ?>
+			                </div>
+			            <?php endforeach; ?>
 
-        </div>
-    </div>
-</div>
-
-
-
-
-		</div>
-	</div>
-	<!-- End Menu -->
-	
-	<!-- Start QT -->
-	<div class="qt-box qt-background">
-		<div class="container">
-			<div class="row">
-				<div class="col-md-8 ml-auto mr-auto text-center">
-					<p class="lead ">
-						“ Visítanos en cualquiera de nuestras sucursales, te esperamos con los brazos abiertos. ”
-					</p>
-					<span class="lead">Atención de calidad</span>
-				</div>
+			        </div>
+			    </div>
 			</div>
 		</div>
 	</div>
-	<!-- End QT -->
 
-
-	<?php
-// 🔑 Configuración DB
-$host = "localhost";
-$user = "root";
-$pass = "";
-$db   = "piconerialandingpagedb";
-
-/*
-$host   = '162.241.203.102';
-$db     = 'danie384_lapiconerialandingpagedb';
-$user   = 'danie384_user';
-$pass   = 'Piconeria2025@';
-$charset= 'utf8_spanish2_ci';
-
-*/
-
-// Conectar a MySQL
-$mysqli = new mysqli($host, $user, $pass, $db);
-if ($mysqli->connect_error) {
-    die("Error de conexión: " . $mysqli->connect_error);
-}
-
-// 🔄 Obtener reseñas guardadas en la DB (10 aleatorias)
-$reviews = [];
-$stmt = $mysqli->prepare("SELECT * FROM google_reviews ORDER BY RAND() LIMIT 10");
-$stmt->execute();
-$result = $stmt->get_result();
-while ($row = $result->fetch_assoc()) {
-    $reviews[] = $row;
-}
-
-// ⭐ Generar HTML para el carrusel
-$reviewsHtml = "";
-$active = "active";
-
-foreach ($reviews as $review) {
-    $stars = str_repeat("⭐", $review['rating']);
-    $reviewsHtml .= '
-    <div class="carousel-item text-center '.$active.'">
-        <div class="img-box p-1 border rounded-circle m-auto" style="width:100px;height:100px;overflow:hidden;">
-            <img class="d-block w-100 rounded-circle" src="'.$review['photo'].'" alt="'.$review['author'].'">
-        </div>
-        <h5 class="mt-4 mb-0"><strong class="text-warning text-uppercase">'.$review['author'].'</strong></h5>
-        <h6 class="text-dark m-0">'.$stars.' - '.$review['place_name'].'</h6>
-        <p class="m-0 pt-3">'.$review['text'].'</p>
-    </div>';
-    $active = ""; // solo el primero es activo
-}
-?>
-	
-	<!-- Start Customer Reviews -->
-	<!-- ---------------------------------------------------------------Start Customer Reviews -->
-	 <div class="customer-reviews-box">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-12">
-                    <div class="heading-title text-center">
-                        <h2>Opiniones de nuestros clientes</h2>
-                        <p>Nuestros clientes respaldan la calidad de nuestros productos</p>
-                    </div>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-md-8 mr-auto ml-auto text-center">
-                    <div id="reviews" class="carousel slide" data-ride="carousel">
-                        <div class="carousel-inner mt-4">
-                            <?php echo $reviewsHtml ?: "<p>No hay reseñas disponibles</p>"; ?>
-                        </div>
-                        <a class="carousel-control-prev" href="#reviews" role="button" data-slide="prev">
-                            <i class="fa fa-angle-left" aria-hidden="true"></i>
-                            <span class="sr-only">Anterior</span>
-                        </a>
-                        <a class="carousel-control-next" href="#reviews" role="button" data-slide="next">
-                            <i class="fa fa-angle-right" aria-hidden="true"></i>
-                            <span class="sr-only">Siguiente</span>
-                        </a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-	<!-- ---------------------------------------------------------------------End Customer Reviews -->
-	<!-- End Customer Reviews -->
-	
-		<!-- Start Contact info -->
-	<div class="contact-imfo-box">
-  <div class="container">
-    <div id="sucursales" class="row">
-      <!-- Aquí se va a mostrar la info dinámica -->
-    </div>
-  </div>
-</div>
-
-<script>
-// Lista de sucursales (puedes agregar todas las que quieras)
-const sucursales = [
-  {
-    telefono: "+52 375 100 3330",
-    email: "lapiconeria@gmail.com",
-    direccion: "Independencia 49B, 46600 Ameca, Jal."
-  },
-  {
-    telefono: "+52 375 100 3330",
-    email: "lapiconeria@gmail.com",
-    direccion: "Av. Patria Pnte. 204, 46600 Ameca, Jal."
-  },
-  {
-    telefono: "+52 375 100 3330",
-    email: "lapiconeria@gmail.com",
-    direccion: "Av Valle de Atemajac 1930, Jardines del Valle, 45138 Zapopan, Jal."
-  }
-];
-
-let index = 0;
-const contenedor = document.getElementById("sucursales");
-
-// Función para renderizar la info de una sucursal
-function mostrarSucursal(idx) {
-  const suc = sucursales[idx];
-  contenedor.innerHTML = `
-    <div class="col-md-4 arrow-right">
-      <i class="fa fa-volume-control-phone"></i>
-      <div class="overflow-hidden">
-        <h4>Teléfono:</h4>
-        <p class="lead">${suc.telefono}</p>
-      </div>
-    </div>
-    <div class="col-md-4 arrow-right">
-      <i class="fa fa-envelope"></i>
-      <div class="overflow-hidden">
-        <h4>Email</h4>
-        <p class="lead">${suc.email}</p>
-      </div>
-    </div>
-    <div class="col-md-4">
-      <i class="fa fa-map-marker"></i>
-      <div class="overflow-hidden">
-        <h4>Location</h4>
-        <p class="lead">${suc.direccion}</p>
-      </div>
-    </div>
-  `;
-}
-
-// Mostrar la primera sucursal
-mostrarSucursal(index);
-
-// Cambiar cada 2 segundos
-setInterval(() => {
-  index = (index + 1) % sucursales.length; 
-  mostrarSucursal(index);
-}, 2000);
-</script>
-
-	<!-- End Contact info -->
-	
-	<!-- Start Footer -->
+   	<!-- Start Footer -->
 	<footer class="footer-area bg-f">
 		<div class="container">
 			<div class="row">

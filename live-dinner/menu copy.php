@@ -1,3 +1,38 @@
+<?php
+// Conexión a la base de datos
+$conexion = new mysqli("localhost", "root", "", "piconerialandingpagedb");
+
+if ($conexion->connect_error) {
+    die("Error de conexión: " . $conexion->connect_error);
+}
+
+// Traer categorías
+$sqlCat = "SELECT * FROM categorias";
+$resCat = $conexion->query($sqlCat);
+
+$categorias = [];
+if ($resCat->num_rows > 0) {
+    while($row = $resCat->fetch_assoc()) {
+        $categorias[] = $row;
+    }
+}
+
+// Traer productos
+$sqlProd = "SELECT p.*, c.slug 
+            FROM productos p
+            INNER JOIN categorias c ON p.categoria_id = c.id";
+$resProd = $conexion->query($sqlProd);
+
+$productos = [];
+if ($resProd->num_rows > 0) {
+    while($row = $resProd->fetch_assoc()) {
+        $productos[] = $row;
+    }
+}
+
+?>
+
+
 <!DOCTYPE html>
 <html lang="en"><!-- Basic -->
 <head>
@@ -45,6 +80,7 @@
 				  <span class="navbar-toggler-icon"></span>
 				</button>
 				<?php include_once "modulos/menu.php"; ?>
+				
 			</div>
 		</nav>
 	</header>
@@ -55,140 +91,184 @@
 		<div class="container text-center">
 			<div class="row">
 				<div class="col-lg-12">
-					<h1>Stuff</h1>
+					<h1>Galeria</h1>
 				</div>
 			</div>
 		</div>
 	</div>
 	<!-- End All Pages -->
 	
-	<!-- Start Stuff -->
-	<div class="stuff-box">
+	<!-- Start Menu -->
+	<div class="menu-box">
 		<div class="container">
 			<div class="row">
 				<div class="col-lg-12">
 					<div class="heading-title text-center">
-						<h2>Stuff</h2>
-						<p>Lorem Ipsum is simply dummy text of the printing and typesetting</p>
+						<h2>Nuestros Productos</h2>
+						<p>Disfruta de esta galería de fotos que hemos preparado para ti</p>
 					</div>
 				</div>
 			</div>
+			
+							<div class="row inner-menu-box">
+    <!-- Menú lateral -->
+    <div class="col-3">
+        <div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
+            <?php foreach ($categorias as $index => $cat): ?>
+                <a class="nav-link <?= $index == 0 ? 'active' : '' ?>"
+                   id="v-pills-<?= $cat['slug'] ?>-tab"
+                   data-toggle="pill"
+                   href="#v-pills-<?= $cat['slug'] ?>"
+                   role="tab"
+                   aria-controls="v-pills-<?= $cat['slug'] ?>"
+                   aria-selected="<?= $index == 0 ? 'true' : 'false' ?>">
+                    <?= $cat['nombre'] ?>
+                </a>
+            <?php endforeach; ?>
+        </div>
+    </div>
+
+    <!-- Contenido -->
+    <div class="col-9">
+        <div class="tab-content" id="v-pills-tabContent">
+
+            <?php foreach ($categorias as $index => $cat): ?>
+                <div class="tab-pane fade <?= $index == 0 ? 'show active' : '' ?>" 
+                     id="v-pills-<?= $cat['slug'] ?>" role="tabpanel">
+
+                    <div class="row">
+                        <?php foreach ($productos as $p): ?>
+                            <?php if ($cat['slug'] == 'home' || $p['slug'] == $cat['slug']): ?>
+                                <div class="col-lg-4 col-md-6 special-grid">
+                                    <div class="gallery-single fix">
+                                        <img src="<?= $p['imagen'] ?>" class="img-fluid" alt="<?= $p['nombre'] ?>">
+                                        <div class="why-text">
+                                            <h4><?= $p['nombre'] ?></h4>
+                                            <p><?= $p['descripcion'] ?></p>
+                                            <h5>$<?= $p['precio'] ?></h5>
+                                        </div>
+                                    </div>
+                                </div>
+                            <?php endif; ?>
+                        <?php endforeach; ?>
+
+                    </div>
+
+                </div>
+            <?php endforeach; ?>
+
+        </div>
+    </div>
+</div>
+
+
+
+
+		</div>
+	</div>
+	<!-- End Menu -->
+	
+	<!-- Start QT -->
+	<div class="qt-box qt-background">
+		<div class="container">
 			<div class="row">
-                <div class="col-md-4 col-sm-6">
-                    <div class="our-team">
-                        <div class="pic">
-                            <img src="images/stuff-img-01.jpg">
-                            <ul class="social">
-                                <li><a href="#" class="fa fa-facebook"></a></li>
-                                <li><a href="#" class="fa fa-google-plus"></a></li>
-                                <li><a href="#" class="fa fa-instagram"></a></li>
-                                <li><a href="#" class="fa fa-linkedin"></a></li>
-                            </ul>
-                        </div>
-                        <div class="team-content">
-                            <h3 class="title">Williamson</h3>
-                            <span class="post">Web Developer</span>
-                        </div>
-                    </div>
-                </div>
+				<div class="col-md-8 ml-auto mr-auto text-center">
+					<p class="lead ">
+						“ Visítanos en cualquiera de nuestras sucursales, te esperamos con los brazos abiertos. ”
+					</p>
+					<span class="lead">Atención de calidad</span>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- End QT -->
 
-                <div class="col-md-4 col-sm-6">
-                    <div class="our-team">
-                        <div class="pic">
-                            <img src="images/stuff-img-02.jpg">
-                            <ul class="social">
-                                <li><a href="#" class="fa fa-facebook"></a></li>
-                                <li><a href="#" class="fa fa-google-plus"></a></li>
-                                <li><a href="#" class="fa fa-instagram"></a></li>
-                                <li><a href="#" class="fa fa-linkedin"></a></li>
-                            </ul>
-                        </div>
-                        <div class="team-content">
-                            <h3 class="title">Kristiana</h3>
-                            <span class="post">Web Designer</span>
-                        </div>
-                    </div>
-                </div>
 
-                <div class="col-md-4 col-sm-6">
-                    <div class="our-team">
-                        <div class="pic">
-                            <img src="images/stuff-img-03.jpg">
-                            <ul class="social">
-                                <li><a href="#" class="fa fa-facebook"></a></li>
-                                <li><a href="#" class="fa fa-google-plus"></a></li>
-                                <li><a href="#" class="fa fa-instagram"></a></li>
-                                <li><a href="#" class="fa fa-linkedin"></a></li>
-                            </ul>
-                        </div>
-                        <div class="team-content">
-                            <h3 class="title">Steve Thomas</h3>
-                            <span class="post">Web Developer</span>
-                        </div>
-                    </div>
-                </div>
-				
-				<div class="col-md-4 col-sm-6">
-                    <div class="our-team">
-                        <div class="pic">
-                            <img src="images/stuff-img-04.jpg">
-                            <ul class="social">
-                                <li><a href="#" class="fa fa-facebook"></a></li>
-                                <li><a href="#" class="fa fa-google-plus"></a></li>
-                                <li><a href="#" class="fa fa-instagram"></a></li>
-                                <li><a href="#" class="fa fa-linkedin"></a></li>
-                            </ul>
-                        </div>
-                        <div class="team-content">
-                            <h3 class="title">Williamson</h3>
-                            <span class="post">Web Developer</span>
-                        </div>
-                    </div>
-                </div>
+	<?php
+// 🔑 Configuración DB
+$host = "localhost";
+$user = "root";
+$pass = "";
+$db   = "piconerialandingpagedb";
 
-                <div class="col-md-4 col-sm-6">
-                    <div class="our-team">
-                        <div class="pic">
-                            <img src="images/stuff-img-05.jpg">
-                            <ul class="social">
-                                <li><a href="#" class="fa fa-facebook"></a></li>
-                                <li><a href="#" class="fa fa-google-plus"></a></li>
-                                <li><a href="#" class="fa fa-instagram"></a></li>
-                                <li><a href="#" class="fa fa-linkedin"></a></li>
-                            </ul>
-                        </div>
-                        <div class="team-content">
-                            <h3 class="title">Kristiana</h3>
-                            <span class="post">Web Designer</span>
-                        </div>
-                    </div>
-                </div>
+/*
+$host   = '162.241.203.102';
+$db     = 'danie384_lapiconerialandingpagedb';
+$user   = 'danie384_user';
+$pass   = 'Piconeria2025@';
+$charset= 'utf8_spanish2_ci';
 
-                <div class="col-md-4 col-sm-6">
-                    <div class="our-team">
-                        <div class="pic">
-                            <img src="images/stuff-img-06.jpg">
-                            <ul class="social">
-                                <li><a href="#" class="fa fa-facebook"></a></li>
-                                <li><a href="#" class="fa fa-google-plus"></a></li>
-                                <li><a href="#" class="fa fa-instagram"></a></li>
-                                <li><a href="#" class="fa fa-linkedin"></a></li>
-                            </ul>
-                        </div>
-                        <div class="team-content">
-                            <h3 class="title">Steve Thomas</h3>
-                            <span class="post">Web Developer</span>
-                        </div>
+*/
+
+// Conectar a MySQL
+$mysqli = new mysqli($host, $user, $pass, $db);
+if ($mysqli->connect_error) {
+    die("Error de conexión: " . $mysqli->connect_error);
+}
+
+// 🔄 Obtener reseñas guardadas en la DB (10 aleatorias)
+$reviews = [];
+$stmt = $mysqli->prepare("SELECT * FROM google_reviews ORDER BY RAND() LIMIT 10");
+$stmt->execute();
+$result = $stmt->get_result();
+while ($row = $result->fetch_assoc()) {
+    $reviews[] = $row;
+}
+
+// ⭐ Generar HTML para el carrusel
+$reviewsHtml = "";
+$active = "active";
+
+foreach ($reviews as $review) {
+    $stars = str_repeat("⭐", $review['rating']);
+    $reviewsHtml .= '
+    <div class="carousel-item text-center '.$active.'">
+        <div class="img-box p-1 border rounded-circle m-auto" style="width:100px;height:100px;overflow:hidden;">
+            <img class="d-block w-100 rounded-circle" src="'.$review['photo'].'" alt="'.$review['author'].'">
+        </div>
+        <h5 class="mt-4 mb-0"><strong class="text-warning text-uppercase">'.$review['author'].'</strong></h5>
+        <h6 class="text-dark m-0">'.$stars.' - '.$review['place_name'].'</h6>
+        <p class="m-0 pt-3">'.$review['text'].'</p>
+    </div>';
+    $active = ""; // solo el primero es activo
+}
+?>
+	
+	<!-- Start Customer Reviews -->
+	<!-- ---------------------------------------------------------------Start Customer Reviews -->
+	 <div class="customer-reviews-box">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="heading-title text-center">
+                        <h2>Opiniones de nuestros clientes</h2>
+                        <p>Nuestros clientes respaldan la calidad de nuestros productos</p>
                     </div>
                 </div>
             </div>
-		</div>
-	</div>
-	<!-- End Stuff -->
+            <div class="row">
+                <div class="col-md-8 mr-auto ml-auto text-center">
+                    <div id="reviews" class="carousel slide" data-ride="carousel">
+                        <div class="carousel-inner mt-4">
+                            <?php echo $reviewsHtml ?: "<p>No hay reseñas disponibles</p>"; ?>
+                        </div>
+                        <a class="carousel-control-prev" href="#reviews" role="button" data-slide="prev">
+                            <i class="fa fa-angle-left" aria-hidden="true"></i>
+                            <span class="sr-only">Anterior</span>
+                        </a>
+                        <a class="carousel-control-next" href="#reviews" role="button" data-slide="next">
+                            <i class="fa fa-angle-right" aria-hidden="true"></i>
+                            <span class="sr-only">Siguiente</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+	<!-- ---------------------------------------------------------------------End Customer Reviews -->
+	<!-- End Customer Reviews -->
 	
-
-		
-	<!-- Start Contact info -->
+		<!-- Start Contact info -->
 	<div class="contact-imfo-box">
   <div class="container">
     <div id="sucursales" class="row">
