@@ -1,0 +1,12 @@
+.negrita{
+ color: black;
+}
+
+ .tabla-datos th {
+    font-size: 14px;
+    text-align: center;
+    color: rgb(34, 9, 175);
+  }
+  .tabla-datos td {
+    font-size: 12px;
+  }

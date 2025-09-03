@@ -1,0 +1,521 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>Microblockchains</title>
+        <meta content="width=device-width, initial-scale=1.0" name="viewport">
+        <meta content="Bootstrap Agency Template" name="keywords">
+        <meta content="Bootstrap Agency Template" name="description">
+
+        <!-- Favicon -->
+        <link href="img/favicon.ico" rel="icon">
+
+        <!-- Google Font -->
+        <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet"> 
+        
+        <!-- CSS Libraries -->
+        <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" rel="stylesheet">
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
+        <link href="lib/slick/slick.css" rel="stylesheet">
+        <link href="libs/slick/slick-theme.css" rel="stylesheet">
+        <link href="lib/lightbox/css/lightbox.min.css" rel="stylesheet">
+
+        <!-- Template Stylesheet -->
+        <link href="css/style.css" rel="stylesheet">
+    </head>
+
+    <body>
+        <div class="wrapper">
+            <!-- Header Start -->
+            <div class="header">
+                <div class="container-fluid">
+                    <div class="row align-items-center">
+                        <div class="col-lg-2">
+                            <div class="brand">
+                                <a href="index.html">
+                                    <img src="img/logo.jpg" alt="Logo">
+                                </a>
+                            </div>
+                        </div>
+                        <div class="col-lg-10">
+                            <div class="topbar">
+                                <div class="topbar-col">
+                                    <a href="tel:+012 345 67890"><i class="fa fa-phone-alt"></i>+52 33 2828 7387</a>
+                                </div>
+                                <div class="topbar-col">
+                                    <a href="mailto:info@example.com"><i class="fa fa-envelope"></i>ventas@microblockchains.com</a>
+                                </div>
+                                <div class="topbar-col">
+                                    <div class="topbar-social">
+                                        <a href=""><i class="fab fa-twitter"></i></a>
+                                        <a href="https://www.facebook.com/profile.php?id=61579712559792"><i class="fab fa-facebook-f"></i></a>
+                                        <a href=""><i class="fab fa-youtube"></i></a>
+                                        <a href=""><i class="fab fa-instagram"></i></a>
+                                        <a href=""><i class="fab fa-linkedin-in"></i></a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="navbar navbar-expand-lg bg-light navbar-light">
+                                <a href="#" class="navbar-brand">MENU</a>
+                                <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
+                                    <span class="navbar-toggler-icon"></span>
+                                </button>
+
+                                <div class="collapse navbar-collapse justify-content-between" id="navbarCollapse">
+                                    <div class="navbar-nav ml-auto">
+                                        <a href="index.html" class="nav-item nav-link active">Inicio</a>
+                                        <a href="about.html" class="nav-item nav-link">Acerca de Nosotros</a>
+                                        <a href="services.html" class="nav-item nav-link">Servicios</a>
+                                        <a href="portfolio.html" class="nav-item nav-link">Portfolio</a>
+                                        <a href="single.html" class="nav-item nav-link">EJemplo</a>
+                                        <a href="contact.html" class="nav-item nav-link">Contactenos</a>
+                                        <a href="https://htmlcodex.com/bootstrap-agency-template" class="btn"><i class="fa fa-download"></i>Descargas</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Header End -->
+
+
+            <!-- Hero Start -->
+            <div class="hero">
+                <div class="container-fluid">
+                    <div class="row align-items-center">
+                        <div class="col-md-6">
+                            <h2>Creación de Software</h2>
+                            <h2><span>a la Medida</span> Para tu negocio</h2>
+                            <p>Permitenos crecer de la mano contigo con nuestras soluciones tecnologicas, con una amplia gama de tecnologías modernas, leguajes de programación potentes, Inteligencia artificial eficiente y equipos de computo para automatizar los procesos de tu empresa</p>
+                            <a class="btn" href="https://htmlcodex.com/bootstrap-agency-template">Ir a descargar</a>
+                        </div>
+                        <div class="col-md-6">
+                            <img src="img/hero.png" alt="Image">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Hero End -->
+            
+            
+            <!-- About Start -->
+            <div class="about">
+                <div class="container-fluid">
+                    <div class="row align-items-center">
+                        <div class="col-md-6">
+                            <div id="video-section">
+                                <div class="youtube-player" data-id="jssO8-5qmag"></div>
+                                
+                                <script>
+                                    document.addEventListener("DOMContentLoaded",
+                                        function() {
+                                            var div, n,
+                                                v = document.getElementsByClassName("youtube-player");
+                                            for (n = 0; n < v.length; n++) {
+                                                div = document.createElement("div");
+                                                div.setAttribute("data-id", v[n].dataset.id);
+                                                div.innerHTML = labnolThumb(v[n].dataset.id);
+                                                div.onclick = labnolIframe;
+                                                v[n].appendChild(div);
+                                            }
+                                        });
+
+                                    function labnolThumb(id) {
+                                        var thumb = '<img src="img/poster.jpg">',
+                                            play = '<div class="play"></div>';
+                                        return thumb.replace("ID", id) + play;
+                                    }
+
+                                    function labnolIframe() {
+                                        var iframe = document.createElement("iframe");
+                                        var embed = "https://www.youtube.com/embed/ID?autoplay=1";
+                                        iframe.setAttribute("src", embed.replace("ID", this.dataset.id));
+                                        iframe.setAttribute("frameborder", "0");
+                                        iframe.setAttribute("allowfullscreen", "1");
+                                        this.parentNode.replaceChild(iframe, this);
+                                    }
+                                </script>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <h2 class="section-title">Acerca de nuestro servicios</h2>
+                            <p>
+                              En microblockchains nos especializamos en modernizar los procesos de tu emprendimiento, proporcionar seguridad a tu negocio y automatizar procesos de producción, con nuestro amplio surtido en equipos de cómputo.
+                            </p>
+                            <p>
+                                Creación de software a la medida,  o instalación y configuración software comercial, como prestashop, Shopify, openCart, WixStore, etc.
+                            </p>
+                            <a class="btn" href="">VER MAS</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- About End -->
+
+
+            <!-- Service Start -->
+            <div class="service">
+                <div class="container-fluid">
+                    <div class="section-header">
+                        <h2>Nuestros Servicios</h2>
+                        <p>Algunos de los servicios que podemos brindarle para mejorar los procesos de ventas y atomatizaciones en su negocio</p>
+                    </div>
+                    <div class="row">
+                        <div class="col-lg-3 col-md-6">
+                            <div class="service-item h-100">
+                                <h3>Desarrollo de Software a la medida.</h3>
+                                <img src="img/icon-service-2.png" alt="Service">
+                                <p>Creamos software que se ajuste a las necesidades de su negocio.</p>
+                            </div>
+                        </div>
+                        <div class="col-lg-3 col-md-6">
+                            <div class="service-item h-100">
+                                <h3>Programación de aplicaciones.</h3>
+                                <img src="img/icon-service-4.png" alt="Service">
+                                <p>Programamos aplicaciones web, de escritorio y móviles para cubrir las necesidades de su empresa.</p>
+                            </div>
+                        </div>
+                        <div class="col-lg-3 col-md-6">
+                            <div class="service-item h-100">
+                                <h3>Programación general.</h3>
+                                <img src="img/icon-service-1.png" alt="Service">
+                                <p>Si ya cuentas con algún sistema y quieres agregar módulos, corregir errores o agregar nuevas funciones, somos tu mejor opción.</p>
+                            </div>
+                        </div>
+                        <div class="col-lg-3 col-md-6">
+                            <div class="service-item h-100">
+                                <h3>Programación de Bases de datos.</h3>
+                                <img src="img/database_902634.png" alt="Service">
+                                <p>Solucionamos el manejo de información con nuestro servicio de creación de bases de datos a la medida de tu negocio.</p>
+                            </div>
+                        </div>
+                        <div class="col-lg-3 col-md-6">
+                            <div class="service-item h-100">
+                                <h3>Servicio de hosting y venta de dominio.</h3>
+                                <img src="img/hostingYdominio.png" alt="Service">
+                                <p>Te proporcionamos un espacio seguro en nuestros servidores para mantener tu información segura y accesible  las 24-7 y 375.</p>
+                            </div>
+                        </div>
+                        <div class="col-lg-3 col-md-6">
+                            <div class="service-item h-100">
+                                <h3>Redes cableadas e inalámbricas.</h3>
+                                <img src="img/redes.png" alt="Service">
+                                <p>Te brindamos soluciones con la conectividad en tu negocio o domicilio con cableado estructurado o/e inalámbrico.</p>
+                            </div>
+                        </div>
+                        <div class="col-lg-3 col-md-6">
+                            <div class="service-item h-100">
+                                <h3>Campañas de marqueting digital.</h3>
+                                <img src="img/megafono.png" alt="Service">
+                                <p>Podemos mostrarte ante el mundo con potentes campañas de anuncios en las redes sociales y Google.</p>
+                            </div>
+                        </div>
+                        <div class="col-lg-3 col-md-6">
+                            <div class="service-item h-100">
+                                <h3>Sistemas de E-Commerce.</h3>
+                                <img src="img/comercio-electronico.png" alt="Service">
+                                <p>Configuramos sistemas comerciales a la medida de tu negocio según tus necesidades y te brindamos soporte.</p>
+                            </div>
+                        </div>
+                        <div class="col-lg-3 col-md-6">
+                            <div class="service-item h-100">
+                                <h3>Ventas de equipos.</h3>
+                                <img src="img/ventaEquipo.png" alt="Service">
+                                <p>Contamos con una amplia gama de equipos de cómputo y ofician tanto para negocio como para uso personal o escolar.</p>
+                            </div>
+                        </div>
+                        <div class="col-lg-3 col-md-6">
+                            <div class="service-item h-100">
+                                <h3>Instalación de equipos.</h3>
+                                <img src="img/software.png" alt="Service">
+                                <p>Deja en manos de nuestros calificados técnicos la instalación de tus equipos y concéntrate solo en crecer tu negocio.</p>
+                            </div>
+                        </div>
+                        <div class="col-lg-3 col-md-6">
+                            <div class="service-item h-100">
+                                <h3>Reparaciones.</h3>
+                                <img src="img/ordenador-portatil.png" alt="Service">
+                                <p>Contamos con suscripciones para soporte técnico preventivo y/o correctivo para tu empresa, así como soporte de una sola ocasión.</p>
+                            </div>
+                        </div>
+                        <div class="col-lg-3 col-md-6">
+                            <div class="service-item h-100">
+                                <h3>Recuperación de datos.</h3>
+                                <img src="img/recuperacion.png" alt="Service">
+                                <p>Trabajamos en colaboración con laboratorios especializados y debidamente certificados para la recuperación de datos de tus equipos dañados.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Service End -->
+
+
+            <!-- FAQs Start -->
+            <div class="faqs">
+                <div class="container-fluid">
+                    <div class="row align-items-center">
+                        <div class="col-md-6">
+                            <h2 class="section-title">Preguntas más frecuentes</h2>
+                            <div id="accordion">
+                                <div class="card">
+                                    <div class="card-header">
+                                        <a class="card-link collapsed" data-toggle="collapse" href="#collapseOne" aria-expanded="true">
+                                           ¿Cuáles son todos los servicios que ustedes brindan al público?
+                                        </a>
+                                    </div>
+                                    <div id="collapseOne" class="collapse show" data-parent="#accordion">
+                                        <div class="card-body">
+                                                <p>Muy buena pregunta como ya hemos mencionado en el apartado acerca de nuestros servicios tenemos una extensa gama de productos y servicios para mejorar el rendimiento de tu empresa:</p>
+                                                <p class="b">Venta de equipos de cómputo accesorios y periféricos. </p>
+                                                <p> (computadoras, impresoras, lap-tops, tablets, ratones, teclados, bocinas, antenas wifi, cable UTP, discos duros, tarjetas RAM, etc.)</p>
+
+                                                <p class="b"> Venta de Softwares a la medida y prediseñado o comercial. </p>
+                                                <p> (software a la medida se refiere a que el software está construido exactamente a la medida de tu negocio, y prediseñado o comercial son softwares de terceros que se pueden ajustar habilitando únicamente los módulos que te funcionan el cual tiene ciertas desventajas de adaptación en comparación de un software a la medida) </p>
+
+                                                <p class="b"> Programación de aplicaciones de escritorio, web y móvil. </p>
+                                                
+                                                <p class="b"> Instalación de software y hardware para tu negocio u hogar. </p>
+
+                                                <p class="b"> Reparación de equipos de cómputo. </p>
+
+                                                <p class="b"> Actualizaciones a sistemas que ya tienes de otros proveedores, siempre y cuando seas el propietario del código y cuentes con acceso al código fuente del sistema. </p>
+
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="card">
+                                    <div class="card-header">
+                                        <a class="card-link" data-toggle="collapse" href="#collapseTwo">
+                                            Aun no hay preguntas para mostrar.¿?
+                                        </a>
+                                    </div>
+                                    <div id="collapseTwo" class="collapse" data-parent="#accordion">
+                                        <div class="card-body">
+                                          Aun no hay respuestas por parte de microblockchains stuff  
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="card">
+                                    <div class="card-header">
+                                        <a class="card-link" data-toggle="collapse" href="#collapseThree">
+                                            Aun no hay preguntas para mostrar.¿?
+                                        </a>
+                                    </div>
+                                    <div id="collapseThree" class="collapse" data-parent="#accordion">
+                                        <div class="card-body">
+                                            Aun no hay respuestas por parte de microblockchains stuff  
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="card">
+                                    <div class="card-header">
+                                        <a class="card-link" data-toggle="collapse" href="#collapseFour">
+                                            Aun no hay preguntas para mostrar.¿?
+                                        </a>
+                                    </div>
+                                    <div id="collapseFour" class="collapse" data-parent="#accordion">
+                                        <div class="card-body">
+                                             Aun no hay respuestas por parte de microblockchains stuff  
+                                        </div>
+                                    </div>
+                                </div> 
+                            </div>
+                            <a class="btn" href="">Ask more</a>
+                        </div>
+                        <div class="col-md-6">
+                            <img src="img/faqs.jpg" alt="Image">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- FAQs End -->
+
+
+            <!-- Testimonial Start -->
+            <div class="testimonial">
+                <div class="container">
+                    <div class="section-header">
+                        <h2>Opinion de nuestros clientes</h2>
+                        <p>Lo que algunos de nuestros clientes opinan de nuestro trato y nuestros servicios.</p>
+                    </div>
+                    <div class="row">
+                        <div class="col-12">
+                            <div class="testimonial-slider-nav">
+                                <div class="slider-nav"><img src="img/testimonial-1.jpg" alt="Testimonial"></div>
+                                <div class="slider-nav"><img src="img/testimonial-2.jpg" alt="Testimonial"></div>
+                                <div class="slider-nav"><img src="img/testimonial-3.jpg" alt="Testimonial"></div>
+                                <div class="slider-nav"><img src="img/testimonial-4.jpg" alt="Testimonial"></div>
+                                <div class="slider-nav"><img src="img/testimonial-1.jpg" alt="Testimonial"></div>
+                                <div class="slider-nav"><img src="img/testimonial-2.jpg" alt="Testimonial"></div>
+                                <div class="slider-nav"><img src="img/testimonial-3.jpg" alt="Testimonial"></div>
+                                <div class="slider-nav"><img src="img/testimonial-4.jpg" alt="Testimonial"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-12">
+                            <div class="testimonial-slider">
+                                <div class="slider-item">
+                                    <h3>Customer Name</h3>
+                                    <h4>profession</h4>
+                                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus nec pretium mi. Curabitur facilisis ornare velit non vulputate. Aliquam metus tortor, auctor id gravida condimentum, viverra quis sem. Curabitur non nisl nec nisi scelerisque maximus.</p>
+                                </div>
+                                <div class="slider-item">
+                                    <h3>Customer Name</h3>
+                                    <h4>profession</h4>
+                                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus nec pretium mi. Curabitur facilisis ornare velit non vulputate. Aliquam metus tortor, auctor id gravida condimentum, viverra quis sem. Curabitur non nisl nec nisi scelerisque maximus.</p>
+                                </div>
+                                <div class="slider-item">
+                                    <h3>Customer Name</h3>
+                                    <h4>profession</h4>
+                                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus nec pretium mi. Curabitur facilisis ornare velit non vulputate. Aliquam metus tortor, auctor id gravida condimentum, viverra quis sem. Curabitur non nisl nec nisi scelerisque maximus.</p>
+                                </div>
+                                <div class="slider-item">
+                                    <h3>Customer Name</h3>
+                                    <h4>profession</h4>
+                                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus nec pretium mi. Curabitur facilisis ornare velit non vulputate. Aliquam metus tortor, auctor id gravida condimentum, viverra quis sem. Curabitur non nisl nec nisi scelerisque maximus.</p>
+                                </div>
+                                <div class="slider-item">
+                                    <h3>Customer Name</h3>
+                                    <h4>profession</h4>
+                                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus nec pretium mi. Curabitur facilisis ornare velit non vulputate. Aliquam metus tortor, auctor id gravida condimentum, viverra quis sem. Curabitur non nisl nec nisi scelerisque maximus.</p>
+                                </div>
+                                <div class="slider-item">
+                                    <h3>Customer Name</h3>
+                                    <h4>profession</h4>
+                                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus nec pretium mi. Curabitur facilisis ornare velit non vulputate. Aliquam metus tortor, auctor id gravida condimentum, viverra quis sem. Curabitur non nisl nec nisi scelerisque maximus.</p>
+                                </div>
+                                <div class="slider-item">
+                                    <h3>Customer Name</h3>
+                                    <h4>profession</h4>
+                                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus nec pretium mi. Curabitur facilisis ornare velit non vulputate. Aliquam metus tortor, auctor id gravida condimentum, viverra quis sem. Curabitur non nisl nec nisi scelerisque maximus.</p>
+                                </div>
+                                <div class="slider-item">
+                                    <h3>Customer Name</h3>
+                                    <h4>profession</h4>
+                                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus nec pretium mi. Curabitur facilisis ornare velit non vulputate. Aliquam metus tortor, auctor id gravida condimentum, viverra quis sem. Curabitur non nisl nec nisi scelerisque maximus.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Testimonial End -->
+
+
+            <!-- News Start -->
+            <div class="news">
+                <div class="container-fluid">
+                    <div class="row align-items-center">
+                        <div class="col-md-6">
+                            <img src="img/news.jpg" alt="Image">
+                        </div>
+                        <div class="col-md-6">
+                            <h2 class="section-title">Lea nuestras ultimas noticias</h2>
+                            <p>
+                                En este apartado podrá leer lo mas actual que está sucediendo en nuestra compañía, noticias de nuevos productos y servicios, así como noticias de oportunidades para trabajar con nosotros o cualquier tipo de noticia que nuestra compañía quiera compartir con nuestros clientes y prospectos para mantenerlo informado acerca de nuestra compañía.
+                            </p>
+                            <p>
+                                Aún no hay nuevas noticias ni eventos a mostrar en este apartado, esté atento a nuestras actualizaciones, lanzamientos, promociones y campañas publicitarias así como bolsa de trabajo para estar al tanto de lo que sucede en Microblockchains.
+                            </p>
+                            <a class="btn" href="">Ver Más</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- News End -->
+
+
+            <!-- Call to Action Start -->
+            <div class="call-to-action">
+                <div class="container">
+                    <div class="row align-items-center">
+                        <div class="col-md-9">
+                            <h2>Contáctenos para obtener más información.</h2>
+                            <p>
+                               Contáctenos para brindarle información acerca de alguno de nuestros servicios, estamos a sus ordenes en cualquiera de los medios de contacto establecidos en esta página.
+                            </p>
+                        </div>
+                        <div class="col-md-3">
+                            <a class="btn" href="https://htmlcodex.com/contact">Contactar ahora!</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Call to Action End -->
+
+
+            <!-- Footer Start -->
+            <div class="footer">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-5">
+                            <div class="footer-about">
+                                <h2>Acerca de Nosotros</h2>
+                                <p>
+                                   Somos una compañía comprometida con la automatización de procesos de nuestros clientes
+                                </p>
+                                <p>
+                                    Y por ende su éxito en un mundo globalizado cada vez más exigente con la manera en que los pequeños comercios brindan atención y servicios a sus clientes.
+                                </p>
+                                <br>
+                                <p><i class="fa fa-map-marker-alt"></i>Rocha Gariba 120, Ameca, Jalisco, Mexico. C.P. 46600</p>
+                                <p><i class="fa fa-phone-alt"></i>+52 33 2828 7387</p>
+                                <p><i class="fa fa-envelope"></i>atencion@microblockchains.com</p>
+                            </div>
+                        </div>
+                        <div class="col-md-7">
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="footer-link">
+                                        <h2>Enlaces Utiles</h2>
+                                        <a href="">Acerca de Nosotros</a>
+                                        <a href="">Nuestras Historia</a>
+                                        <a href="">Nuestros Servicios</a>
+                                        <a href="">Nuestro Portafolio</a>
+                                        <a href="">Nuestros Proyectos</a>
+                                        <a href="">Contactarnos</a>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="footer-link">
+                                        <h2>Enlaces Utiles</h2>
+                                        <a href="">Nuestros Clientes</a>
+                                        <a href="">Calificaciones</a>
+                                        <a href="">Cliente en curso</a>
+                                        <a href="">Soporte al Cliente</a>
+                                        <a href="">Prteguntas Frecuentes</a>
+                                        <a href="">Mapa del sitio</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="container copyright">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <p>&copy; <a href="https://htmlcodex.com">Microblockchains</a>, All Right Reserved.</p>
+                        </div>
+                        <div class="col-md-6">
+                            <p>Obtenga una pagina como esta <a href="contact.html">Microblockchains</a></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Footer End -->
+        </div>
+
+        <!-- JavaScript Libraries -->
+        <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.bundle.min.js"></script>
+        <script src="lib/slick/slick.min.js"></script>
+        <script src="lib/isotope/isotope.pkgd.min.js"></script>
+        <script src="lib/lightbox/js/lightbox.min.js"></script>
+
+        <!-- Template Javascript -->
+        <script src="js/main.js"></script>
+    </body>
+</html>

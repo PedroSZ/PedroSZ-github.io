@@ -1,0 +1,59 @@
+
+body {
+    /*padding-bottom: 80px;  Espacio suficiente para que no se oculte el contenido */
+}
+
+#teclasRapidas {
+    position: fixed;
+    top: 190px; /* Como tú lo ajustaste */
+    right: 20px;
+    background: rgba(0, 0, 0, 0.7);
+    color: white;
+    padding: 12px 16px;
+    border-radius: 10px;
+    font-size: 14px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.celda-actualizada {
+    background-color: #d4edda !important; /* verde claro */
+    transition: background-color 0.5s ease;
+}
+
+.resultado-busqueda {
+    position: absolute;
+    background-color: white;
+    border: 1px solid #ced4da;
+    max-height: 150px;
+    overflow-y: auto;
+    width: 300px; /* o el ancho que necesites */
+    z-index: 1000;
+    cursor: pointer;
+}
+
+.resultado-busqueda div {
+    padding: 8px;
+}
+
+.resultado-busqueda div:hover {
+    background-color: #e9ecef;
+}
+
+#bienvenida_user{
+  margin-top: 20vh; /* Ajusta este valor según la altura de tu navbar */
+  text-align: left;
+}   
+
+@media (max-width: 375px), (max-width: 430px),  handheld and (orientation: landscape) {
+
+    #bienvenida_user{
+        margin-top: 70vh; /* Ajusta este valor según la altura de tu navbar */
+        text-align: center;
+    }
+    
+    #teclasRapidas {
+        top: 150px; /* Ajusta según sea necesario */
+        right: 10px; /* Ajusta según sea necesario */
+        width: 90%; /* Para que ocupe más espacio en pantallas pequeñas */
+    }
+}
